@@ -29,6 +29,20 @@
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/tg-cursor.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        .courses__item-thumb img {
+            width: 100%;    /* Makes the image take the full width of its container */
+            height: auto;   /* Adjusts the height automatically to maintain the aspect ratio */
+            object-fit: cover; /* Ensures the image covers the available space without stretching */
+            object-position: center; /* Centers the image within the container */
+        }
+        h1{
+            margin-bottom: 35px;
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -236,13 +250,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="breadcrumb__content">
-                            <h3 class="title">Student Login</h3>
+                            <h3 class="title">Account Type</h3>
                             <nav class="breadcrumb">
                                 <span property="itemListElement" typeof="ListItem">
                                     <a href="index.html">Home</a>
                                 </span>
                                 <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
-                                <span property="itemListElement" typeof="ListItem">Login</span>
+                                <span property="itemListElement" typeof="ListItem">Account Type</span>
                             </nav>
                         </div>
                     </div>
@@ -258,55 +272,75 @@
         </section>
         <!-- breadcrumb-area-end -->
 
-        <!-- singUp-area -->
-        <section class="singUp-area section-py-120">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-6 col-lg-8">
-                        <div class="singUp-wrap">
-                            <h2 class="title">Welcome back!</h2>
-                            <p>Hey there! Ready to log in? Just enter your username and password below and you'll be back in action in no time. Let's go!</p>
-                            <div class="account__social">
-                                <a href="#" class="account__social-btn">
-                                    <img src="assets/img/icons/google.svg" alt="img">
-                                    Continue with google
-                                </a>
-                            </div>
-                            <div class="account__divider">
-                                <span>or</span>
-                            </div>
-                            <form action="#" class="account__form">
-                                <div class="form-grp">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="text" placeholder="email">
-                                </div>
-                                <div class="form-grp">
-                                    <label for="password">Password</label>
-                                    <input id="password" type="text" placeholder="password">
-                                </div>
-                                <div class="account__check">
-                                    <div class="account__check-remember">
-                                        <input type="checkbox" class="form-check-input" value="" id="terms-check">
-                                        <label for="terms-check" class="form-check-label">Remember me</label>
-                                    </div>
-                                    <div class="account__check-forgot">
-                                        <a href="registration.html">Forgot Password?</a>
-                                    </div>
-                                </div>
-                                <a  href="Account_type.html" class="btn btn-two arrow-btn" >Sign In<img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
-                            </form>
-                            <div class="account__switch">
-                                <p>Don't have an account?<a href="registration.html">Sign Up</a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- singUp-area-end -->
+   
 
     </main>
     <!-- main-area-end -->
+
+        <!-- all-courses -->
+        <section class="all-courses-area section-py-120">
+            <h1>Choose Your Use Case</h1>
+            <div class="container">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                        <div class="row courses__grid-wrap row-cols-1 row-cols-xl-3 row-cols-lg-2 row-cols-md-2 row-cols-sm-1 justify-content-evenly">
+                            <!-- Organizer Section -->
+                            <div class="col">
+                                <div class="courses__item shine__animate-item">
+                                    <div class="courses__item-thumb">
+                                        <a href="organizer-login.html" class="shine__animate-link">
+                                            <img src="assets/img/new/organizer.jpg" alt="Organizer">
+                                        </a>
+                                    </div>
+                                    <div class="courses__item-content">
+                                        <h5 class="title"><a href="organizer-login.html">Sign in as an Organizer</a></h5>
+                                        <p class="author"><a href="#">Create and Manage your Event</a></p>
+                                        <p class="marketing-text">Empower your events – seamlessly create, promote, and manage them all in one place.</p>
+                                        <div class="courses__item-bottom">
+                                            <div class="button">
+                                                <a href="organizer-login.html">
+                                                    <span class="text">Get Started</span>
+                                                    <i class="flaticon-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- User/Attendee Section -->
+                            <div class="col">
+                                <div class="courses__item shine__animate-item">
+                                    <div class="courses__item-thumb">
+                                        <a href="user-login.html" class="shine__animate-link">
+                                            <img src="assets/img/new/attendees.jpg" alt="User">
+                                        </a>
+                                    </div>
+                                    <div class="courses__item-content">
+                                        <h5 class="title"><a href="user-login.html">Sign in as an Attendee</a></h5>
+                                        <p class="author"><a href="#">Attend and Explore Events</a></p>
+                                        <p class="marketing-text">Discover events that inspire you, tailored to your interests.</p>
+                                        <div class="courses__item-bottom">
+                                            <div class="button">
+                                                <a href="courses.html">
+                                                    <span class="text">Get Started</span>
+                                                    <i class="flaticon-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                     
+                </div>
+            </div>
+        </section>
+        <!-- all-courses-end -->
 
     <!-- footer-area -->
     <footer class="footer__area">
