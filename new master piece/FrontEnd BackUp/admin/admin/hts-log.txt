@@ -1,0 +1,15 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 17 Sep 2024 15:00:31 at https://coderthemes.com/simple/layouts/vertical/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://coderthemes.com/simple/layouts/vertical/index.html -O1 "C:\Users\Qusai sn\Desktop\new master piece\admin\admin" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+15:01:44	Error: 	"Not Found" (404) at link https://coderthemes.com/simple/layouts/vertical/page-recoverpw.html (from https://coderthemes.com/simple/layouts/vertical/pages-login.html)
+15:01:44	Error: 	"Not Found" (404) at link https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/font/summernote.eot?1d9aeaaff0a8939558a45be6cd52cd4c (from https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/summernote-bs4.css)
+15:01:44	Error: 	"Not Found" (404) at link https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/font/summernote.woff?1d9aeaaff0a8939558a45be6cd52cd4c (from https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/summernote-bs4.css)
+15:01:44	Error: 	"Not Found" (404) at link https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/font/summernote.ttf?1d9aeaaff0a8939558a45be6cd52cd4c (from https://coderthemes.com/simple/layouts/vertical/assets/libs/summernote/summernote-bs4.css)
+
+HTTrack Website Copier/3.49-2 mirror complete in 1 minutes 13 seconds : 199 links scanned, 194 files written (17431020 bytes overall) [11412355 bytes received at 156333 bytes/sec], 8201243 bytes transferred using HTTP compression in 118 files, ratio 25%, 18.0 requests per connection
+(4 errors, 0 warnings, 0 messages)

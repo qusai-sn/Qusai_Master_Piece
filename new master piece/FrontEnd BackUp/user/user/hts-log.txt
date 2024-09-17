@@ -1,0 +1,29 @@
+HTTrack3.49-2+htsswf+htsjava launched on Tue, 17 Sep 2024 14:02:22 at https://html.themegenix.com/skillgro/index.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://html.themegenix.com/skillgro/index.html -O1 "C:\Users\Qusai sn\Desktop\new master piece\user\user" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+14:07:04	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/course.html (from https://html.themegenix.com/skillgro/index.html)
+14:07:04	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/instructor-datails.html (from https://html.themegenix.com/skillgro/index.html)
+14:07:09	Warning: 	Retry after error -4 (Incorrect length (180224 Bytes, 253505 expected)) at link https://html.themegenix.com/skillgro/assets/fonts/fa-brands-400.svg (from https://html.themegenix.com/skillgro/assets/css/fontawesome-all.min.css)
+14:07:10	Warning: 	Retry after error -4 (Incorrect length (0 Bytes, 16467 expected)) at link https://html.themegenix.com/skillgro/assets/fonts/fa-regular-400.eot (from https://html.themegenix.com/skillgro/assets/css/fontawesome-all.min.css)
+14:07:11	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/assets/skillgro-icon/flaticon_skillgro.ttf?1ef5b908031aa083bdbc72ac4c837d2e (from https://html.themegenix.com/skillgro/assets/css/flaticon-skillgro-new.css)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/Version/ (from https://html.themegenix.com/skillgro/assets/js/tween-max.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/e (from https://html.themegenix.com/skillgro/assets/js/swiper-bundle.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/t.params.url (from https://html.themegenix.com/skillgro/assets/js/swiper-bundle.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/src/js/index.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/node_modules/gsap/gsap-core.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/node_modules/jquery/dist/jquery.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/node_modules/gsap/index.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/src/js/cursor.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/src/js/magnetic.js (from https://html.themegenix.com/skillgro/assets/js/tg-cursor.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/GET (from https://html.themegenix.com/skillgro/assets/js/vivus.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/Trident/ (from https://html.themegenix.com/skillgro/assets/js/vivus.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/Edge/ (from https://html.themegenix.com/skillgro/assets/js/vivus.min.js)
+14:07:13	Error: 	"Not Found" (404) at link https://html.themegenix.com/skillgro/dist/ (from https://html.themegenix.com/skillgro/assets/js/aos.js)
+
+HTTrack Website Copier/3.49-2 mirror complete in 4 minutes 52 seconds : 584 links scanned, 565 files written (29244158 bytes overall) [19663121 bytes received at 67339 bytes/sec], 13982063 bytes transferred using HTTP compression in 305 files, ratio 27%, 22.4 requests per connection
+(16 errors, 2 warnings, 0 messages)
