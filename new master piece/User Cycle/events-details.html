@@ -31,6 +31,12 @@
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
+<style>
+    .about__info-list {
+        margin-bottom: 30px;
+    }
+</style>
+
 <body>
 
     <!--Preloader-->
@@ -302,7 +308,7 @@
     <main class="main-area fix">
 
         <!-- breadcrumb-area -->
-        <section class="breadcrumb__area breadcrumb__bg" data-background="assets/img/bg/breadcrumb_bg.jpg">
+        <!-- <section class="breadcrumb__area breadcrumb__bg" data-background="assets/img/bg/breadcrumb_bg.jpg">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -330,82 +336,309 @@
                 <img src="assets/img/others/breadcrumb_shape04.svg" alt="img" data-aos="fade-down-left" data-aos-delay="400">
                 <img src="assets/img/others/breadcrumb_shape05.svg" alt="img" data-aos="fade-left" data-aos-delay="400">
             </div>
-        </section>
+        </section> -->
         <!-- breadcrumb-area-end -->
 
+      
         <!-- event-details-area -->
         <section class="event__details-area section-py-120">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="event__details-thumb">
-                            <img src="assets/img/events/event_details_img.jpg" alt="img">
+                            <img src="assets/img/new/event_banner2.jpg" alt="img">
                         </div>
                         <div class="event__details-content-wrap">
                             <div class="row">
                                 <div class="col-70">
-                                    <div class="event__details-content">
-                                        <div class="event__details-content-top">
-                                            <a href="courses.html" class="tag">Development</a>
-                                            <span class="avg-rating"><i class="fas fa-star"></i>(4.8 Reviews)</span>
-                                        </div>
-                                        <h2 class="title">How To Become idiculously Self-Aware In 20 Minutes</h2>
-                                        <div class="event__meta">
+                                    <div class="courses__details-content">
+                                        <ul class="courses__item-meta list-wrap">
+                                            <li class="courses__item-tag">
+                                                <a href="course.html">Development</a>
+                                            </li>
+                                            <li class="courses__item-tag">
+                                                <a href="course.html">Conference</a>
+                                            </li>
+                                         </ul>
+                                        <h2 class="title">Resolving Conflicts Between Designers And Engineers</h2>
+                                        <div class="courses__details-meta">
                                             <ul class="list-wrap">
-                                                <li class="author">
+                                                <li class="author-two">
                                                     <img src="assets/img/courses/course_author001.png" alt="img">
                                                     By
-                                                    <a href="instructor-details.html">David Millar</a>
+                                                    <a href="#">David Millar</a>
                                                 </li>
-                                                <li class="location"><i class="flaticon-placeholder"></i>LocationWashington DC, MI 2726</li>
-                                                <li><i class="flaticon-mortarboard"></i>2,250 Students</li>
-                                            </ul>
+                                                <li class="date"><i class="flaticon-calendar"></i>24/07/2024</li>
+                                             </ul>
                                         </div>
-                                        <div class="event__details-overview">
-                                            <h4 class="title-two">Event Overview</h4>
-                                            <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.dolor sit amet, consectetur adipiscing elited do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                        <h4 class="title-two">What you'll learn in this event?</h4>
-                                        <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan.</p>
-                                        <div class="event__details-inner">
-                                            <div class="row">
-                                                <div class="col-39">
-                                                    <img src="assets/img/events/event_details_img02.jpg" alt="img">
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview-tab-pane" type="button" role="tab" aria-controls="overview-tab-pane" aria-selected="true">Overview</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="curriculum-tab" data-bs-toggle="tab" data-bs-target="#curriculum-tab-pane" type="button" role="tab" aria-controls="curriculum-tab-pane" aria-selected="false">Schedule</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="instructors-tab" data-bs-toggle="tab" data-bs-target="#instructors-tab-pane" type="button" role="tab" aria-controls="instructors-tab-pane" aria-selected="false">Speakers</button>
+                                            </li>
+                                            <li class="nav-item" role="presentation">
+                                                <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews-tab-pane" type="button" role="tab" aria-controls="reviews-tab-pane" aria-selected="false">reviews</button>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="myTabContent">
+                                            <div class="tab-pane fade show active" id="overview-tab-pane" role="tabpanel" aria-labelledby="overview-tab" tabindex="0">
+                                                
+                                               
+                                                <div class="courses__overview-wrap">
+                                                    <h3 class="title">Event Overview</h3>
+                                                    <p>The Annual Business & Entrepreneurship Summit brings together innovators, entrepreneurs, and industry leaders to discuss the latest trends, challenges, and opportunities in the business world. This two-day event will offer a blend of keynote speeches, panel discussions, and interactive workshops designed to inspire and equip attendees with actionable insights and strategies for success.</p>
+                                                    
+                                                    <h3 class="title">What to Expect from this Event</h3>
+                                                    <p>Attendees will gain valuable knowledge on emerging business trends, hear success stories from established entrepreneurs, and have the chance to participate in networking sessions with like-minded professionals. The event is designed to foster collaboration, learning, and inspiration for all who attend.</p>
+                                                
+                                                    <ul class="about__info-list list-wrap">
+                                                        <li class="about__info-list-item">
+                                                            <i class="flaticon-angle-right"></i>
+                                                            <p class="content">Keynote speeches from renowned business leaders like Sarah Johnson (CEO, Innovate Inc.) and Michael Smith (Founder, TechPioneers)</p>
+                                                        </li>
+                                                        <li class="about__info-list-item">
+                                                            <i class="flaticon-angle-right"></i>
+                                                            <p class="content">Hands-on workshops covering topics such as business growth, marketing strategies, and tech innovation</p>
+                                                        </li>
+                                                        <li class="about__info-list-item">
+                                                            <i class="flaticon-angle-right"></i>
+                                                            <p class="content">Exclusive networking opportunities with investors, entrepreneurs, and industry experts</p>
+                                                        </li>
+                                                        <li class="about__info-list-item">
+                                                            <i class="flaticon-angle-right"></i>
+                                                            <p class="content">Interactive panel discussions with successful startup founders and venture capitalists</p>
+                                                        </li>
+                                                    </ul>
+                                                    
+                                                    <p class="last-info">This summit is a must-attend event for anyone looking to take their business to the next level. Join us on October 14-15, 2024, at the Grand Convention Center in New York City. Early bird registration is now open, so reserve your spot today and take the next step in your entrepreneurial journey.</p>
                                                 </div>
-                                                <div class="col-61">
-                                                    <div class="event__details-inner-content">
-                                                        <h4 class="title">Four major elements that we offer <br> for this event</h4>
-                                                        <ul class="about__info-list list-wrap">
-                                                            <li class="about__info-list-item">
-                                                                <i class="flaticon-angle-right"></i>
-                                                                <p class="content">Work with color & Gradients & Grids</p>
-                                                            </li>
-                                                            <li class="about__info-list-item">
-                                                                <i class="flaticon-angle-right"></i>
-                                                                <p class="content">All the useful shortcuts</p>
-                                                            </li>
-                                                            <li class="about__info-list-item">
-                                                                <i class="flaticon-angle-right"></i>
-                                                                <p class="content">Be able to create Flyers, Brochures, Advertisements</p>
-                                                            </li>
-                                                            <li class="about__info-list-item">
-                                                                <i class="flaticon-angle-right"></i>
-                                                                <p class="content">How to work with Images & Text</p>
-                                                            </li>
-                                                        </ul>
+                                                
+                                            </div>
+                                            <div class="tab-pane fade" id="curriculum-tab-pane" role="tabpanel" aria-labelledby="curriculum-tab" tabindex="0">
+                                                <div class="courses__curriculum-wrap">
+                                                    <h3 class="title">Event Schedule</h3>
+                                                    <p>Join us for an action-packed event where industry leaders and experts will share their insights on innovation, entrepreneurship, and future trends. Here’s a breakdown of the key sessions:</p>
+                                                    <div class="accordion" id="accordionExample">
+                                                        
+                                                        <!-- Morning Sessions -->
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingMorning">
+                                                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMorning" aria-expanded="true" aria-controls="collapseMorning">
+                                                                    Morning (9:00 AM - 12:00 PM)
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseMorning" class="accordion-collapse collapse show" aria-labelledby="headingMorning" data-bs-parent="#accordionExample">
+                                                                <div class="accordion-body">
+                                                                    <ul class="list-wrap">
+                                                                        <li class="course-item open-item">
+                                                                            <span class="item-name">9:00 AM - 9:30 AM: Registration & Welcome Coffee</span>
+                                                                             
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">9:30 AM - 10:30 AM: Opening Remarks & Introduction to Key Topics</span>
+                                                                            <div class="course-item-meta">
+                                                                             </div>
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">10:30 AM - 12:00 PM: Workshop - Innovation and Entrepreneurship</span>
+                                                                            <div class="course-item-meta">
+                                                                             </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <!-- Afternoon Sessions -->
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingAfternoon">
+                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAfternoon" aria-expanded="false" aria-controls="collapseAfternoon">
+                                                                    Afternoon (12:00 PM - 3:00 PM)
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseAfternoon" class="accordion-collapse collapse" aria-labelledby="headingAfternoon" data-bs-parent="#accordionExample">
+                                                                <div class="accordion-body">
+                                                                    <ul class="list-wrap">
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">12:00 PM - 1:00 PM: Networking Lunch</span>
+                                                                          
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">1:00 PM - 2:30 PM: Panel Discussion - The Future of Business & Technology</span>
+                                                                          
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">2:30 PM - 3:00 PM: Coffee Break & Networking</span>
+                                                                           
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                
+                                                        <!-- Evening Sessions -->
+                                                        <div class="accordion-item">
+                                                            <h2 class="accordion-header" id="headingEvening">
+                                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEvening" aria-expanded="false" aria-controls="collapseEvening">
+                                                                    Evening (3:00 PM - 6:00 PM)
+                                                                </button>
+                                                            </h2>
+                                                            <div id="collapseEvening" class="accordion-collapse collapse" aria-labelledby="headingEvening" data-bs-parent="#accordionExample">
+                                                                <div class="accordion-body">
+                                                                    <ul class="list-wrap">
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">3:00 PM - 4:30 PM: Keynote - Scaling Your Business for Success</span>
+                                                                          
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">4:30 PM - 5:00 PM: Closing Remarks & Final Takeaways</span>
+                                                                           
+                                                                        </li>
+                                                                        <li class="course-item">
+                                                                            <span class="item-name">5:00 PM - 6:00 PM: Networking & Cocktail Hour</span>
+                                                                            
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="tab-pane fade" id="instructors-tab-pane" role="tabpanel" aria-labelledby="instructors-tab" tabindex="0">
+                                                <div class="courses__instructors-wrap">
+                                                    <div class="courses__instructors-thumb">
+                                                        <img src="assets/img/courses/course_instructors.png" alt="img">
+                                                    </div>
+                                                    <div class="courses__instructors-content">
+                                                        <h2 class="title">Mark Jukarberg</h2>
+                                                        <span class="designation">UX Design Lead</span>
+                                                        <p class="avg-rating"><i class="fas fa-star"></i>(4.8 Ratings)</p>
+                                                        <p>Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan.</p>
+                                                        <div class="instructor__social">
+                                                            <ul class="list-wrap justify-content-start">
+                                                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                                                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                                                                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="reviews-tab-pane" role="tabpanel" aria-labelledby="reviews-tab" tabindex="0">
+                                                <div class="courses__rating-wrap">
+                                                    <h2 class="title">Reviews</h2>
+                                                    <div class="course-rate">
+                                                        <div class="course-rate__summary">
+                                                            <div class="course-rate__summary-value">4.8</div>
+                                                            <div class="course-rate__summary-stars">
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                                <i class="fas fa-star"></i>
+                                                            </div>
+                                                            <div class="course-rate__summary-text">
+                                                                12 Ratings
+                                                            </div>
+                                                        </div>
+                                                        <div class="course-rate__details">
+                                                            <div class="course-rate__details-row">
+                                                                <div class="course-rate__details-row-star">
+                                                                    5
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <div class="course-rate__details-row-value">
+                                                                    <div class="rating-gray"></div>
+                                                                    <div class="rating" style="width:80%;" title="80%"></div>
+                                                                    <span class="rating-count">2</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="course-rate__details-row">
+                                                                <div class="course-rate__details-row-star">
+                                                                    4
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <div class="course-rate__details-row-value">
+                                                                    <div class="rating-gray"></div>
+                                                                    <div class="rating" style="width:50%;" title="50%"></div>
+                                                                    <span class="rating-count">1</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="course-rate__details-row">
+                                                                <div class="course-rate__details-row-star">
+                                                                    3
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <div class="course-rate__details-row-value">
+                                                                    <div class="rating-gray"></div>
+                                                                    <div class="rating" style="width:0%;" title="0%"></div>
+                                                                    <span class="rating-count">0</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="course-rate__details-row">
+                                                                <div class="course-rate__details-row-star">
+                                                                    2
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <div class="course-rate__details-row-value">
+                                                                    <div class="rating-gray"></div>
+                                                                    <div class="rating" style="width:0%;" title="0%"></div>
+                                                                    <span class="rating-count">0</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="course-rate__details-row">
+                                                                <div class="course-rate__details-row-star">
+                                                                    1
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                                <div class="course-rate__details-row-value">
+                                                                    <div class="rating-gray"></div>
+                                                                    <div class="rating" style="width:0%;" title="0%"></div>
+                                                                    <span class="rating-count">0</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="course-review-head">
+                                                        <div class="review-author-thumb">
+                                                            <img src="assets/img/courses/review-author.png" alt="img">
+                                                        </div>
+                                                        <div class="review-author-content">
+                                                            <div class="author-name">
+                                                                <h5 class="name">Jura Hujaor <span>2 Days ago</span></h5>
+                                                                <div class="author-rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                    <i class="fas fa-star"></i>
+                                                                </div>
+                                                            </div>
+                                                            <h4 class="title">The best LMS Design System</h4>
+                                                            <p>Maximus ligula eleifend id nisl quis interdum. Sed malesuada tortor non turpis semper bibendum nisi porta, malesuada risus nonerviverra dolor. Vestibulum ante ipsum primis in faucibus.</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <p>Morem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan.Dorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magn.</p>
                                     </div>
+                                   
                                 </div>
                                 <div class="col-30">
                                     <aside class="event__sidebar">
                                         <div class="event__widget">
                                             <div class="courses__details-sidebar">
                                                 <div class="courses__cost-wrap">
-                                                    <span>Event Fee</span>
+                                                    <span>Ticket Price</span>
                                                     <h2 class="title">$19.00</h2>
                                                 </div>
                                                 <div class="courses__information-wrap">
@@ -414,7 +647,7 @@
                                                         <li>
                                                             <img src="assets/img/icons/calendar.svg" alt="img" class="injectable">
                                                             Date
-                                                            <span>26/08/2024</span>
+                                                            <span>26/10/2024</span>
                                                         </li>
                                                         <li>
                                                             <img src="assets/img/icons/course_icon02.svg" alt="img" class="injectable">
@@ -422,24 +655,20 @@
                                                             <span>10.00am</span>
                                                         </li>
                                                         <li>
-                                                            <img src="assets/img/icons/course_icon03.svg" alt="img" class="injectable">
-                                                            Topics
-                                                            <span>12</span>
+                                                            <img src="assets/img/icons/course_icon02.svg" alt="img" class="injectable">
+                                                            End Time
+                                                            <span>3.00pm</span>
                                                         </li>
-                                                        <li>
-                                                            <img src="assets/img/icons/course_icon04.svg" alt="img" class="injectable">
-                                                            Quizzes
-                                                            <span>145</span>
+                                                        <li> 
+                                                            <img src="assets/img/icons/map-pin-svgrepo-com.svg" alt="img" class="injectable">
+                                                            Location
+                                                            <span>Amman</span>
                                                         </li>
-                                                        <li>
-                                                            <img src="assets/img/icons/course_icon05.svg" alt="img" class="injectable">
-                                                            Certifications
-                                                            <span>Yes</span>
-                                                        </li>
+                                                      
                                                         <li>
                                                             <img src="assets/img/icons/course_icon06.svg" alt="img" class="injectable">
                                                             Total Seat
-                                                            <span>300</span>
+                                                            <span>43/80</span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -468,7 +697,8 @@
                                             <div class="event__map">
                                                 <h4 class="title">Map</h4>
                                                 <div class="map">
-                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48409.69813174607!2d-74.05163325136718!3d40.68264649999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25bae694479a3%3A0xb9949385da52e69e!2sBarclays%20Center!5e0!3m2!1sen!2sbd!4v1684309529719!5m2!1sen!2sbd" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                                    <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d216663.6087361063!2d35.689091839469256!3d31.950887765402538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca01f4813fa53%3A0xb305654d2c2663b2!2sMAP%20Architects%20%26%20Engineers!5e0!3m2!1sen!2sjo!4v1726659967578!5m2!1sen!2sjo" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d216663.6087361063!2d35.689091839469256!3d31.950887765402538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca01f4813fa53%3A0xb305654d2c2663b2!2sMAP%20Architects%20%26%20Engineers!5e0!3m2!1sen!2sjo!4v1726659967578!5m2!1sen!2sjo" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                                                 </div>
                                             </div>
                                         </div>

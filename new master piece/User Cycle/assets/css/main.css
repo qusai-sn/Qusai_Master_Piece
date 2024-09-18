@@ -19729,7 +19729,7 @@ blockquote > p {
 .lesson__content .course-item-link .item-name::before {
   content: "";
   display: block;
-  background-image: url(../img/icons/play.svg);
+  background-image: url(../img/icons/);
   width: 30px;
   height: 30px;
   flex: 0 0 auto;
