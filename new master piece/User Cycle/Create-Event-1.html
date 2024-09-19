@@ -282,10 +282,13 @@
                                                     <button class="nav-link active" id="itemOne-tab" data-bs-toggle="tab" data-bs-target="#itemOne-tab-pane" type="button" role="tab" aria-controls="itemOne-tab-pane" aria-selected="true">Overview</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="itemTwo-tab" data-bs-toggle="tab" data-bs-target="#itemTwo-tab-pane" type="button" role="tab" aria-controls="itemTwo-tab-pane" aria-selected="false">Details</button>
+                                                    <button class="nav-link" id="itemTwo-tab" data-bs-toggle="tab" data-bs-target="#itemTwo-tab-pane" type="button" role="tab" aria-controls="itemTwo-tab-pane" aria-selected="false">Speakers</button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link" id="itemThree-tab" data-bs-toggle="tab" data-bs-target="#itemThree-tab-pane" type="button" role="tab" aria-controls="itemThree-tab-pane" aria-selected="false">Tickets</button>
+                                                    <button class="nav-link" id="itemThree-tab" data-bs-toggle="tab" data-bs-target="#itemThree-tab-pane" type="button" role="tab" aria-controls="itemThree-tab-pane" aria-selected="false">schedule</button>
+                                                </li>
+                                                <li class="nav-item" role="presentation">
+                                                    <button class="nav-link" id="itemFour-tab" data-bs-toggle="tab" data-bs-target="#itemFour-tab-pane" type="button" role="tab" aria-controls="itemFour-tab-pane" aria-selected="false">Tickets</button>
                                                 </li>
                                             </ul>
                                         </div>
@@ -301,6 +304,11 @@
                                                                     <label for="eventTitle">Event Title</label>
                                                                     <input id="eventTitle" type="text" value="Woman Business Conference 2019">
                                                                 </div>
+                                                                <div class="form-grp">
+                                                                    <label for="overview">Event Overview</label>
+                                                                    <textarea id="overview" name="overview" placeholder="write a paragraph of at least 4 lines "></textarea>
+                                                                </div>
+
                                                                 <div class="timing">
                                                                     <div class="form-grp">
                                                                         <label for="eventDate">Date</label>
@@ -315,21 +323,45 @@
                                                                         <input id="endTime" type="time" value="15:00">
                                                                     </div>
                                                                 </div>
-                                                                 
+                                                                <div class="timing">
+                                                                    <div class="form-grp">
+                                                                        <label for="eventDate">City</label>
+                                                                        <input id="eventDate" type="text" value="Amman">
+                                                                    </div>
+                                                                    <div class="form-grp">
+                                                                        <label for="startTime">Location</label>
+                                                                        <input id="startTime" type="text" value="Google map link">
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="timing">
+                                                                    
+                                                                    <div class="form-grp">
+                                                                        <label for="eventType">Event Type</label>
+                                                                        <select id="eventType" name="eventType">
+                                                                            <option value="Conference">Conference</option>
+                                                                            <option value="Workshop">Workshop</option>
+                                                                            <option value="Seminar">Seminar</option>
+                                                                        </select>
+                                                                    </div> 
+                                                                    <div class="form-grp">
+                                                                        <label for="eventType">Event Category</label>
+                                                                        <select id="eventType" name="eventType">
+                                                                            <option value="Art & Design">Art & Design</option>
+                                                                            <option value="Business">Business</option>
+                                                                            <option value="Data Science">Data Science</option>
+                                                                            <option value="Development">Development</option>
+                                                                            <option value="Finance">Finance</option>
+                                                                            <option value="Health & Fitness">Health & Fitness</option>
+                                                                            <option value="Lifestyle">Lifestyle</option>
+                                                                        </select>
+                                                                    </div> 
+                                                                </div>
                                                               
-                                                                <div class="form-grp">
-                                                                    <label for="location">Location</label>
-                                                                    <input id="location" type="text" value="Amman">
-                                                                </div>
-                                                                 
-                                                                <div class="form-grp">
-                                                                    <label for="totalSeats">Total Seats</label>
-                                                                    <input id="totalSeats" type="number" value="80">
-                                                                </div>
-                                                                <div class="form-grp">
-                                                                    <label for="eventType">Event Type</label>
-                                                                    <input id="eventType" type="text" value="Conference">
-                                                                </div>
+                                                              
+                                                                
+
+                                                                
                                                             </div>
                                                         </div>
                                                      
@@ -344,19 +376,21 @@
                                                 <div class="instructor__profile-form-wrap">
                                                     <form action="#" class="instructor__profile-form">
                                                         <div class="form-grp">
-                                                            <label for="currentpassword">Current Password</label>
-                                                            <input id="currentpassword" type="password" placeholder="Current Password">
+                                                            <label for="speakerName">Speaker Name</label>
+                                                            <input id="speakerName" type="text" name="speakerName" placeholder="Enter speaker's name">
                                                         </div>
                                                         <div class="form-grp">
-                                                            <label for="newpassword">New Password</label>
-                                                            <input id="newpassword" type="password" placeholder="New Password">
+                                                            <label for="speakerRole">Speaker Role</label>
+                                                            <input id="speakerRole" type="text" name="speakerRole" placeholder="Enter speaker's role">
                                                         </div>
+                                                      
                                                         <div class="form-grp">
-                                                            <label for="repassword">Re-Type New Password</label>
-                                                            <input id="repassword" type="password" placeholder="Re-Type New Password">
+                                                            <label for="speakerBio">Speaker Biography</label>
+                                                            <textarea id="speakerBio" name="speakerBio" placeholder="Enter speaker's biography"></textarea>
                                                         </div>
                                                         <div class="submit-btn mt-25">
-                                                            <button type="submit" class="btn">Update Password</button>
+                                                            <button type="submit" class="btn">Add  Speaker</button>
+
                                                         </div>
                                                     </form>
                                                 </div>
@@ -364,34 +398,72 @@
                                             <div class="tab-pane fade" id="itemThree-tab-pane" role="tabpanel" aria-labelledby="itemThree-tab" tabindex="0">
                                                 <div class="instructor__profile-form-wrap">
                                                     <form action="#" class="instructor__profile-form">
+                                                        
+                                                        
                                                         <div class="form-grp">
-                                                            <label for="facebook">Facebook</label>
-                                                            <input id="facebook" type="url" placeholder="https://facebook.com/">
+                                                            <label for="eventDate">Activity Title</label>
+                                                            <input id="eventDate" type="text" value="Amman">
                                                         </div>
                                                         <div class="form-grp">
-                                                            <label for="twitter">Twitter</label>
-                                                            <input id="twitter" type="url" placeholder="https://twitter.com/">
+                                                            <label for="startTime">Activity Description</label>
+                                                            <input id="startTime" type="text" value="Google map link">
+                                                        </div>
+                                                        
+                                                        <div class="form-grp">
+                                                            <label for="startTime">Start Time</label>
+                                                            <input id="startTime" type="time" value="10:00">
                                                         </div>
                                                         <div class="form-grp">
-                                                            <label for="linkedin">Linkedin</label>
-                                                            <input id="linkedin" type="url" placeholder="https://linkedin.com/">
+                                                            <label for="endTime">End Time</label>
+                                                            <input id="endTime" type="time" value="15:00">
                                                         </div>
+                                                    
+                                                    <div class="submit-btn">
+                                                        <button type="submit" class="btn">Submit Schedule</button>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="itemFour-tab-pane" role="tabpanel" aria-labelledby="itemFour-tab" tabindex="0">
+                                                <div class="instructor__profile-form-wrap">
+                                                    <form action="#" class="instructor__profile-form">
+                                                         
                                                         <div class="form-grp">
-                                                            <label for="website">Website</label>
-                                                            <input id="website" type="url" placeholder="https://website.com/">
+                                                            <label for="TicketType">Ticket Type</label>
+                                                            <select id="TicketType" name="TicketType">
+                                                                <option value="paid">Paid</option>
+                                                                <option value="free">Free</option>
+                                                                <option value="donation">Donation</option>
+                                                            </select>
                                                         </div>
-                                                        <div class="form-grp">
-                                                            <label for="github">Github</label>
-                                                            <input id="github" type="url" placeholder="https://github.com/">
+                                                        <div class="timing">
+                                                            <div class="form-grp">
+                                                                <label for="eventDate">Price</label>
+                                                                <input id="eventDate" type="number" value="Amman">
+                                                            </div>
+                                                            <div class="form-grp">
+                                                                <label for="startTime">Donation Limit</label>
+                                                                <input id="startTime" type="number" value="Google map link">
+                                                            </div>
                                                         </div>
                                                         <div class="submit-btn mt-25">
-                                                            <button type="submit" class="btn">Update Profile</button>
+                                                            <button type="submit" class="btn">Add Ticket</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
+                                           
+                                            
                                         </div>
                                     </div>
+                                </div>
+                                <br>
+                                 
+                            </div>
+                            <br>
+                            <div class="dashboard__content-wrap" style="display: flex; justify-content: center;">
+                                <div class="submit-btn">
+                                    <button type="submit" class="btn btn-two arrow-btn">Create Event</button>
                                 </div>
                             </div>
                         </div>
