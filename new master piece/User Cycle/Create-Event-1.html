@@ -31,9 +31,25 @@
     <link rel="stylesheet" href="assets/css/main.css">
 
     <style>
+        .timing {
+            display: flex;
+            align-items: center; /* Ensures the labels and inputs align */
+            justify-content: flex-start; /* Aligns items to the left */
+            gap: 10px; /* Space between each form group */
+        }
+
+        .form-grp {
+            flex-grow: 1; /* Allows each form group to grow */
+        }
+
+        #eventDate {
+            flex-grow: 2; /* Gives the date input twice the space compared to start and end time */
+        }
         .row{
             justify-content: center;
         }
+
+
     </style>
 </head>
 
@@ -275,62 +291,54 @@
                                         </div>
                                         <div class="tab-content" id="myTabContent">
                                             <div class="tab-pane fade show active" id="itemOne-tab-pane" role="tabpanel" aria-labelledby="itemOne-tab" tabindex="0">
-                                               
                                                 <div class="instructor__profile-form-wrap">
                                                     <form action="#" class="instructor__profile-form">
                                                         <div class="row">
-                                                            <div class="col-md-6">
+                                                            
+                                                            <!-- Event Information Fields -->
+                                                            <div class="col-md-12">
                                                                 <div class="form-grp">
-                                                                    <label for="firstname">First Name</label>
-                                                                    <input id="firstname" type="text" value="John">
+                                                                    <label for="eventTitle">Event Title</label>
+                                                                    <input id="eventTitle" type="text" value="Woman Business Conference 2019">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
+                                                                <div class="timing">
+                                                                    <div class="form-grp">
+                                                                        <label for="eventDate">Date</label>
+                                                                        <input id="eventDate" type="date" value="2024-08-28">
+                                                                    </div>
+                                                                    <div class="form-grp">
+                                                                        <label for="startTime">Start Time</label>
+                                                                        <input id="startTime" type="time" value="10:00">
+                                                                    </div>
+                                                                    <div class="form-grp">
+                                                                        <label for="endTime">End Time</label>
+                                                                        <input id="endTime" type="time" value="15:00">
+                                                                    </div>
+                                                                </div>
+                                                                 
+                                                              
                                                                 <div class="form-grp">
-                                                                    <label for="lastname">Last Name</label>
-                                                                    <input id="lastname" type="text" value="Due">
+                                                                    <label for="location">Location</label>
+                                                                    <input id="location" type="text" value="Amman">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
+                                                                 
                                                                 <div class="form-grp">
-                                                                    <label for="username">User Name</label>
-                                                                    <input id="username" type="text" value="johndue">
+                                                                    <label for="totalSeats">Total Seats</label>
+                                                                    <input id="totalSeats" type="number" value="80">
                                                                 </div>
-                                                            </div>
-                                                            <div class="col-md-6">
                                                                 <div class="form-grp">
-                                                                    <label for="phonenumber">Phone Number</label>
-                                                                    <input id="phonenumber" type="tel" value="+123 599 8989">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-grp">
-                                                                    <label for="skill">Skill/Occupation</label>
-                                                                    <input id="skill" type="text" value="Full Stack Developer">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-grp select-grp">
-                                                                    <label for="displayname">Display Name Publicly As</label>
-                                                                    <select id="displayname" name="displayname">
-                                                                        <option value="Emily Hannah">Emily Hannah</option>
-                                                                        <option value="John">John</option>
-                                                                        <option value="Due">Due</option>
-                                                                        <option value="Due John">Due John</option>
-                                                                        <option value="johndue">johndue</option>
-                                                                    </select>
+                                                                    <label for="eventType">Event Type</label>
+                                                                    <input id="eventType" type="text" value="Conference">
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="form-grp">
-                                                            <label for="bio">Bio</label>
-                                                            <textarea id="bio">I am eager to bring my passion for creating user-friendly and efficient web interfaces to your dynamic team. I am applying for Front End Developer position in your company.</textarea>
-                                                        </div>
+                                                     
                                                         <div class="submit-btn mt-25">
                                                             <button type="submit" class="btn">Update Info</button>
                                                         </div>
                                                     </form>
                                                 </div>
+                                                
                                             </div>
                                             <div class="tab-pane fade" id="itemTwo-tab-pane" role="tabpanel" aria-labelledby="itemTwo-tab" tabindex="0">
                                                 <div class="instructor__profile-form-wrap">
