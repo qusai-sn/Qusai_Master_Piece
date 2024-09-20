@@ -2,7 +2,7 @@
 <html class="no-js" lang="en">
 
 
-<!-- Mirrored from html.themegenix.com/skillgro/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:06:52 GMT -->
+<!-- Mirrored from html.themegenix.com/skillgro/check-out.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:06:52 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -29,6 +29,12 @@
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/tg-cursor.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <Style>
+        .row{
+            justify-content: center;
+        }
+    </Style>
 </head>
 
 <body>
@@ -48,8 +54,9 @@
         <i class="tg-flaticon-arrowhead-up"></i>
     </button>
     <!-- Scroll-top-end-->
-       <!-- header-area -->
-       <header>
+     
+    <!-- header-area -->
+    <header>
         <div class="tg-header__top">
             <div class="container custom-container">
                 <div class="row">
@@ -236,13 +243,13 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="breadcrumb__content">
-                            <h3 class="title">Tickets Cart</h3>
+                            <h3 class="title">Event Checkout</h3>
                             <nav class="breadcrumb">
                                 <span property="itemListElement" typeof="ListItem">
                                     <a href="index.html">Home</a>
                                 </span>
                                 <span class="breadcrumb-separator"><i class="fas fa-angle-right"></i></span>
-                                <span property="itemListElement" typeof="ListItem">Tickets Cart</span>
+                                <span property="itemListElement" typeof="ListItem">Event Checkout</span>
                             </nav>
                         </div>
                     </div>
@@ -258,87 +265,31 @@
         </section>
         <!-- breadcrumb-area-end -->
 
-        <!-- cart-area -->
-        <div class="cart__area section-py-120">
+        <!-- checkout-area -->
+        <div class="checkout__area section-py-120">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-8">
-                        <table class="table cart__table">
-                            <thead>
-                                <tr>
-                                    <th class="product__thumb">&nbsp;</th>
-                                    <th class="product__name">Ticket</th>
-                                    <th class="product__price">Price</th>
-                                    <th class="product__quantity">Quantity</th>
-                                    <th class="product__subtotal">Subtotal</th>
-                                    <th class="product__remove">&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="product__thumb">
-                                        <a href="shop-details.html"><img src="assets/img/shop/shop_img01.jpg" alt=""></a>
-                                    </td>
-                                    <td class="product__name">
-                                            <a href="shop-details.html">Woman Business Conference 2019</a>
-                                    </td>
-                                    <td class="product__price">$19.00</td>
-                                    <td class="product__quantity">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product__subtotal">$19.00</td>
-                                    <td class="product__remove">
-                                        <a href="#">×</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="product__thumb">
-                                        <a href="shop-details.html"><img src="assets/img/shop/shop_img02.jpg" alt=""></a>
-                                    </td>
-                                    <td class="product__name">
-                                        <a href="shop-details.html">Time to Explore</a>
-                                    </td>
-                                    <td class="product__price">$19.00</td>
-                                    <td class="product__quantity">
-                                        <div class="cart-plus-minus">
-                                            <input type="text" value="1">
-                                        </div>
-                                    </td>
-                                    <td class="product__subtotal">$19.00</td>
-                                    <td class="product__remove">
-                                        <a href="#">×</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="6" class="cart__actions">
-                                        <form action="#" class="cart__actions-form">
-                                            <input type="text" placeholder="Coupon code">
-                                            <button type="submit" class="btn">Apply coupon</button>
-                                        </form>
-                                        <div class="update__cart-btn text-end f-right">
-                                            <button type="submit" class="btn">Update cart</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="cart__collaterals-wrap">
-                            <h2 class="title">Cart totals</h2>
+                     
+                  
+                    <div class="col-lg-5">
+                        <div class="order__info-wrap">
+                            <h2 class="title">YOUR ORDER</h2>
                             <ul class="list-wrap">
-                                <li>Subtotal <span>$38.00</span></li>
-                                <li>Total <span class="amount">$38.00</span></li>
+                                <li class="title">Event<span>Subtotal</span></li>
+                                <li>Woman Bussiness <span>$50.99</span></li>
+                                
+                                <li>Total <span>$50.99</span></li>
                             </ul>
-                            <a href="check-out.html" class="btn">Proceed to checkout</a>
+                            <p>Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.</p>
+                            <p>Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our <a href="#">privacy policy.</a></p>
+                           <a href="instructor-courses.html"><button class="btn">Place order</button></a> 
+                             
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- cart-area-end -->
+        <!-- checkout-area-end -->
 
     </main>
     <!-- main-area-end -->
@@ -486,5 +437,5 @@
 </body>
 
 
-<!-- Mirrored from html.themegenix.com/skillgro/cart.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:06:52 GMT -->
+<!-- Mirrored from html.themegenix.com/skillgro/check-out.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:06:52 GMT -->
 </html>
