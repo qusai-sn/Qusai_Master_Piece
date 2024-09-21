@@ -1,0 +1,10 @@
+
+insta page that needs an Event : https://www.instagram.com/bridge_jordan/?igsh=MW02dHhiaGJhb3NhNA%3D%3D
+
+best events page to take ideas from :  https://www.eventbrite.com/ ; exactly emulate this website 
+
+go fund : https://www.gofundme.com/f/help-muslims-take-their-pilgrimage-hajj?utm_campaign=p_cp+fundraiser-sidebar&utm_medium=copy_link_all&utm_source=customer
+
+colors : 
+    - 5751e1 primary
+    - ffc224 yellow
