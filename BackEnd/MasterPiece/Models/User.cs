@@ -20,8 +20,10 @@ public partial class User
 
     public string? Biography { get; set; }
 
+    [JsonIgnore]
     public string? PasswordHash { get; set; }
 
+    [JsonIgnore]
     public string? Salt { get; set; }
 
     [JsonIgnore]
