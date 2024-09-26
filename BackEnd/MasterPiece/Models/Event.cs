@@ -34,6 +34,8 @@ public partial class Event
 
     public string? BannerUrl { get; set; }
 
+    public string? LocationUrl { get; set; }
+
     public virtual EventCategory? Category { get; set; }
 
     public virtual User? Organizer { get; set; }

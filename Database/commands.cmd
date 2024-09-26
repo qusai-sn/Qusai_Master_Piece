@@ -7,10 +7,11 @@ Install-Package Microsoft.EntityFrameworkCore.Tools
 
 then use scafolding command 
 
-Scaffold-DbContext "Server=DESKTOP-GIEQN5M;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context MasterPieceContext
+Scaffold-DbContext "Server=DESKTOP-AD5CUR3;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context MasterPieceContext
 
 PC Server : "DESKTOP-GIEQN5M"
 Database : "MasterPiece"
+Labtop Server : "DESKTOP-AD5CUR3"
 
 add this to program.cs 
 // Add services to the container.

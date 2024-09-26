@@ -33,7 +33,7 @@ public partial class MasterPieceContext : DbContext
     {
         modelBuilder.Entity<Event>(entity =>
         {
-            entity.HasKey(e => e.EventId).HasName("PK__Events__7944C870C5C34B6E");
+            entity.HasKey(e => e.EventId).HasName("PK__Events__7944C870F7A29FAC");
 
             entity.Property(e => e.EventId).HasColumnName("EventID");
             entity.Property(e => e.BannerUrl)
@@ -41,6 +41,9 @@ public partial class MasterPieceContext : DbContext
                 .HasColumnName("BannerURL");
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.Location).HasMaxLength(255);
+            entity.Property(e => e.LocationUrl)
+                .HasMaxLength(255)
+                .HasColumnName("location_url");
             entity.Property(e => e.OrganizerId).HasColumnName("OrganizerID");
             entity.Property(e => e.TicketPrice).HasColumnType("decimal(10, 2)");
             entity.Property(e => e.Title).HasMaxLength(255);
@@ -48,20 +51,20 @@ public partial class MasterPieceContext : DbContext
 
             entity.HasOne(d => d.Category).WithMany(p => p.Events)
                 .HasForeignKey(d => d.CategoryId)
-                .HasConstraintName("FK__Events__Category__5070F446");
+                .HasConstraintName("FK__Events__Category__3E52440B");
 
             entity.HasOne(d => d.Organizer).WithMany(p => p.Events)
                 .HasForeignKey(d => d.OrganizerId)
-                .HasConstraintName("FK__Events__Organize__4F7CD00D");
+                .HasConstraintName("FK__Events__Organize__3D5E1FD2");
 
             entity.HasOne(d => d.Type).WithMany(p => p.Events)
                 .HasForeignKey(d => d.TypeId)
-                .HasConstraintName("FK__Events__TypeID__5165187F");
+                .HasConstraintName("FK__Events__TypeID__3F466844");
         });
 
         modelBuilder.Entity<EventCategory>(entity =>
         {
-            entity.HasKey(e => e.CategoryId).HasName("PK__EventCat__19093A2B660DE3B0");
+            entity.HasKey(e => e.CategoryId).HasName("PK__EventCat__19093A2B798D34F3");
 
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(255);
@@ -69,7 +72,7 @@ public partial class MasterPieceContext : DbContext
 
         modelBuilder.Entity<EventType>(entity =>
         {
-            entity.HasKey(e => e.TypeId).HasName("PK__EventTyp__516F039568A5AC0D");
+            entity.HasKey(e => e.TypeId).HasName("PK__EventTyp__516F039529195671");
 
             entity.Property(e => e.TypeId).HasColumnName("TypeID");
             entity.Property(e => e.TypeName).HasMaxLength(255);
@@ -77,7 +80,7 @@ public partial class MasterPieceContext : DbContext
 
         modelBuilder.Entity<Ticket>(entity =>
         {
-            entity.HasKey(e => e.TicketId).HasName("PK__Tickets__712CC6277DCC7CBE");
+            entity.HasKey(e => e.TicketId).HasName("PK__Tickets__712CC62797668673");
 
             entity.Property(e => e.TicketId).HasColumnName("TicketID");
             entity.Property(e => e.EventId).HasColumnName("EventID");
@@ -87,16 +90,16 @@ public partial class MasterPieceContext : DbContext
 
             entity.HasOne(d => d.Event).WithMany(p => p.Tickets)
                 .HasForeignKey(d => d.EventId)
-                .HasConstraintName("FK__Tickets__EventID__5441852A");
+                .HasConstraintName("FK__Tickets__EventID__4222D4EF");
 
             entity.HasOne(d => d.User).WithMany(p => p.Tickets)
                 .HasForeignKey(d => d.UserId)
-                .HasConstraintName("FK__Tickets__UserID__5535A963");
+                .HasConstraintName("FK__Tickets__UserID__4316F928");
         });
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC52036696");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC240730BA");
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
             entity.Property(e => e.Email).HasMaxLength(255);
