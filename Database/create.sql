@@ -3,6 +3,8 @@ CREATE TABLE Users (
     FirstName NVARCHAR(255),
     LastName NVARCHAR(255),
     Email NVARCHAR(255),
+    PasswordHash NVARCHAR(255),
+    Salt NVARCHAR(255),
     PhoneNumber NVARCHAR(20),
     Username NVARCHAR(255),
     Biography NVARCHAR(MAX)
