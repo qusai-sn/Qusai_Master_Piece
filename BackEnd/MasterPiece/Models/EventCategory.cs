@@ -11,5 +11,6 @@ public partial class EventCategory
     public string? CategoryName { get; set; }
 
     [JsonIgnore]
+
     public virtual ICollection<Event> Events { get; set; } = new List<Event>();
 }

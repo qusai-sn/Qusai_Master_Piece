@@ -19,6 +19,8 @@ public partial class MasterPieceContext : DbContext
 
     public virtual DbSet<EventCategory> EventCategories { get; set; }
 
+    public virtual DbSet<EventSession> EventSessions { get; set; }
+
     public virtual DbSet<EventType> EventTypes { get; set; }
 
     public virtual DbSet<Ticket> Tickets { get; set; }
@@ -68,6 +70,21 @@ public partial class MasterPieceContext : DbContext
 
             entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
             entity.Property(e => e.CategoryName).HasMaxLength(255);
+        });
+
+        modelBuilder.Entity<EventSession>(entity =>
+        {
+            entity.HasKey(e => e.SessionId).HasName("PK__EventSes__C9F49270E343684F");
+
+            entity.Property(e => e.SessionId).HasColumnName("SessionID");
+            entity.Property(e => e.EventId).HasColumnName("EventID");
+            entity.Property(e => e.SessionTime).HasMaxLength(50);
+            entity.Property(e => e.SessionTitle).HasMaxLength(255);
+            entity.Property(e => e.SessionType).HasMaxLength(50);
+
+            entity.HasOne(d => d.Event).WithMany(p => p.EventSessions)
+                .HasForeignKey(d => d.EventId)
+                .HasConstraintName("FK__EventSess__Event__534D60F1");
         });
 
         modelBuilder.Entity<EventType>(entity =>

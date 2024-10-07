@@ -6,8 +6,12 @@ namespace MasterPiece.Services
     {
         Task<IEnumerable<Event>> GetAllEventsAsync();
         Task<Event> GetEventByIdAsync(int eventId);
+        Task<string> GetEventHighLights(int eventId);  
+        Task<IEnumerable<EventSession>> GetEventSchedule(int eventId);
 
-     }
+
+
+    }
 
 
 }

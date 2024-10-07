@@ -37,7 +37,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Serve default static files (for other assets like JS, CSS, etc.)
 app.UseStaticFiles();
 
 // Serve files from the "Media" folder for event banners and other media files
@@ -45,12 +44,11 @@ app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "Media")),
-    RequestPath = "/Media"  // Maps the "Media" folder to "/media" in the URL
+    RequestPath = "/Media"   
 });
 
 app.UseRouting();
 
-// Apply CORS policy
 app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();

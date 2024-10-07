@@ -38,6 +38,36 @@ namespace MasterPiece.Services
                 .FirstOrDefaultAsync(e => e.EventId == eventId);
         }
 
+        public async Task<string> GetEventHighLights(int eventId)
+        {
+            if (eventId <= 0)
+            {
+                return null;
+            }
+
+            var eventEntity = await _context.Events
+                .Where(e => e.EventId == eventId)
+                .Select(e => e.Highlights)
+                .FirstOrDefaultAsync();
+
+            return eventEntity;
+        }
+
+
+        public async Task<IEnumerable<EventSession>> GetEventSchedule(int eventId)
+        {
+            if (eventId <= 0)
+            {
+                return null;
+            }
+
+            var eventSessions = await _context.EventSessions
+                .Where(es => es.EventId == eventId)
+                .ToListAsync();
+
+            return eventSessions;
+        }
+
 
 
 

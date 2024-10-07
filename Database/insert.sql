@@ -23,3 +23,18 @@ VALUES ('Digital Marketing Masterclass', 'An advanced masterclass on the strateg
 
 INSERT INTO Events (Title, Description, Date, StartTime, EndTime, Location, TotalSeats, AvailableSeats, TicketPrice, CategoryID, TypeID, OrganizerID, BannerURL)
 VALUES ('Tech Innovations Summit', 'A summit focused on the latest technological innovations and trends.', '2024-11-15', '10:00:00', '18:00:00', 'Tech Park, Silicon Valley', 500, 450, 150.00, 2, 1, 1, 'http://example.com/techsummit-banner.jpg');
+
+
+-- Insert sessions for EventID 1
+INSERT INTO EventSessions (EventID, SessionTime, SessionTitle, SessionDescription, SessionType) VALUES
+(1, '9:00 AM - 9:30 AM', 'Registration & Welcome Coffee', '', 'Morning'),
+(1, '9:30 AM - 10:30 AM', 'Opening Remarks & Introduction to Key Topics', '', 'Morning'),
+(1, '10:30 AM - 12:00 PM', 'Workshop - Innovation and Entrepreneurship', '', 'Morning'),
+(1, '12:00 PM - 1:00 PM', 'Networking Lunch', '', 'Afternoon'),
+(1, '1:00 PM - 2:30 PM', 'Panel Discussion - The Future of Business & Technology', '', 'Afternoon'),
+(1, '2:30 PM - 3:00 PM', 'Coffee Break & Networking', '', 'Afternoon'),
+(1, '3:00 PM - 4:30 PM', 'Keynote - Scaling Your Business for Success', '', 'Evening'),
+(1, '4:30 PM - 5:00 PM', 'Closing Remarks & Final Takeaways', '', 'Evening'),
+(1, '5:00 PM - 6:00 PM', 'Networking & Cocktail Hour', '', 'Evening');
+GO
+

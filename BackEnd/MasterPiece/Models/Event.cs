@@ -36,12 +36,20 @@ public partial class Event
 
     public string? LocationUrl { get; set; }
 
+    public string? WhatToExpect { get; set; }
+
+    public string? Highlights { get; set; }
+
     public virtual EventCategory? Category { get; set; }
 
+     public virtual ICollection<EventSession> EventSessions { get; set; } = new List<EventSession>();
+
+    [JsonIgnore]
     public virtual User? Organizer { get; set; }
 
     [JsonIgnore]
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
+    [JsonIgnore]
     public virtual EventType? Type { get; set; }
 }

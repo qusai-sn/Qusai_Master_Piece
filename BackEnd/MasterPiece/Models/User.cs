@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace MasterPiece.Models;
 
@@ -24,8 +23,7 @@ public partial class User
 
     public string? Biography { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<Event> Events { get; set; } = new List<Event>();
-    [JsonIgnore]
+
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

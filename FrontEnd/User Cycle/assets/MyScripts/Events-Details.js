@@ -100,3 +100,144 @@ fetch(apiUrl)
   .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
   });
+
+  
+  async function fetchEventSchedule(eventId) {
+    try {
+        const response = await fetch(`https://localhost:7293/api/EventDetails/${eventId}/schedule`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const schedule = await response.json();
+        populateSchedule(schedule);
+    } catch (error) {
+        console.error('Error fetching schedule:', error);
+    }
+}
+
+function populateSchedule(schedule) {
+    const accordionExample = document.getElementById("accordionExample");
+    
+    // Group sessions by session type
+    const groupedSessions = schedule.reduce((acc, session) => {
+        if (!acc[session.sessionType]) {
+            acc[session.sessionType] = [];
+        }
+        acc[session.sessionType].push(session);
+        return acc;
+    }, {});
+
+    // Create accordion items for each session type
+    for (const [sessionType, sessions] of Object.entries(groupedSessions)) {
+        const accordionItem = document.createElement('div');
+        accordionItem.classList.add('accordion-item');
+        
+        // Create the header for this session type
+        const headerId = `heading${sessionType}`;
+        const collapseId = `collapse${sessionType}`;
+        accordionItem.innerHTML = `
+            <h2 class="accordion-header" id="${headerId}">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#${collapseId}" aria-expanded="true" aria-controls="${collapseId}">
+                    ${sessionType} Sessions
+                </button>
+            </h2>
+            <div id="${collapseId}" class="accordion-collapse collapse" aria-labelledby="${headerId}" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <ul class="list-wrap">
+                        ${sessions.map(session => `
+                            <li class="course-item">
+                                <span class="item-name">${session.sessionTime}: ${session.sessionTitle}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
+        accordionExample.appendChild(accordionItem);
+    }
+}
+
+// Call this function with the specific event ID you want to fetch the schedule for
+// You can change the event ID or call this function dynamically based on your application's logic
+fetchEventSchedule(1); // Example event ID
+
+
+async function fetchEventDetails(eventId) {
+    try {
+        const response = await fetch(`https://localhost:7293/api/EventDetails/${eventId}`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const eventDetails = await response.json();
+        populateEventDetails(eventDetails);
+    } catch (error) {
+        console.error('Error fetching event details:', error);
+    }
+}
+
+function populateEventDetails(eventDetails) {
+    const whatToExpect = document.getElementById("What-to-Expect");
+    const highlightsList = document.getElementById("Event-HighLights");
+
+    // Update "What to Expect" section
+    whatToExpect.innerText = eventDetails.whatToExpect;
+
+    // Clear current highlights
+    highlightsList.innerHTML = '';
+
+    // Populate "Event Highlights" section
+    const highlights = eventDetails.highlights.split(';').map(item => item.trim());
+    highlights.forEach(highlight => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('about__info-list-item');
+        listItem.innerHTML = `
+            <i class="flaticon-angle-right"></i>
+            <p class="content">${highlight}</p>
+        `;
+        highlightsList.appendChild(listItem);
+    });
+}
+
+// Call this function with the specific event ID you want to fetch details for
+fetchEventDetails(1); // Example event ID
+ 
+ 
+// Function to register the event ticket details in local storage
+function registerEventTicket() {
+    const ticketTitle = document.getElementById('event_title').textContent; // Get the event title
+    const ticketPrice = parseFloat(document.getElementById('Ticket_price').textContent.replace('$', '')); // Get the ticket price as a number
+    const quantity = 1; // Assuming quantity is always 1 for this example
+    const subtotal = ticketPrice * quantity; // Calculate subtotal
+
+    // Create a ticket object
+    const ticket = {
+        title: ticketTitle,
+        price: ticketPrice,
+        quantity: quantity,
+        subtotal: subtotal
+    };
+
+    // Retrieve existing tickets from local storage
+    const existingTickets = JSON.parse(localStorage.getItem('eventTickets')) || [];
+
+    // Add the new ticket to the existing tickets
+    existingTickets.push(ticket);
+
+    // Store the updated tickets array back to local storage
+    localStorage.setItem('eventTickets', JSON.stringify(existingTickets));
+
+    // Log to the console for confirmation (optional)
+    console.log('Event ticket registered:', ticket);
+}
+
+// Add event listener to the button
+document.getElementById('joinEventButton').addEventListener('click', (event) => {
+    // Prevent default anchor behavior if needed
+    event.preventDefault();
+
+    // Register the ticket details
+    registerEventTicket();
+
+    // Redirect to the cart page
+    window.location.href = 'cart.html';
+});
