@@ -3,6 +3,7 @@ using MasterPiece.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using MasterPiece.DTO;
 
 namespace MasterPiece.Controllers
 {
@@ -78,6 +79,31 @@ namespace MasterPiece.Controllers
             }
 
             return Ok(schedule);
+        }
+
+        // GET: api/EventDetails/{id}/speakers
+        [HttpGet("{id}/speakers")]
+        public async Task<IActionResult> GetEventSpeakers(int id)
+        {
+            if (id <= 0)
+            {
+                return BadRequest("Event ID is not valid.");
+            }
+
+            var speakers = await _eventService.GetEventSpeakers(id);
+            if (speakers == null || !speakers.Any())
+            {
+                return NotFound("No speakers found for this event.");
+            }
+
+            return Ok(speakers);
+        }
+
+        [HttpGet("summaries")]
+        public async Task<ActionResult<IEnumerable<EventSummaryDto>>> GetEventSummaries()
+        {
+            var eventSummaries = await _eventService.GetEventSummariesAsync();
+            return Ok(eventSummaries);
         }
     }
 }

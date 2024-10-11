@@ -23,7 +23,15 @@ public partial class User
 
     public string? Biography { get; set; }
 
+    public bool? IsOrganizer { get; set; }
+
+    public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
+
     public virtual ICollection<Event> Events { get; set; } = new List<Event>();
+
+    public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
+
+    public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 }

@@ -68,9 +68,18 @@
 // change the content of the tag to the response data , by using js . 
 
 
+// Function to get a query parameter by name
+function getQueryParam(param) {
+    // Create a URLSearchParams object from the current URL's query string
+    const urlParams = new URLSearchParams(window.location.search);
+    // Return the value of the specified parameter
+    return urlParams.get(param);
+}
 
-// Fetch event details by ID
-const eventId = 1;  // Event ID you want to fetch
+// Example usage: Get the 'id' parameter from the URL
+const eventId = getQueryParam('id');
+
+ 
 const apiUrl = `https://localhost:7293/api/EventDetails/${eventId}`;
 
 // Fetch the event details
@@ -84,22 +93,26 @@ fetch(apiUrl)
   .then(data => {
       // Map the API response to the HTML elements
       document.getElementById('Ticket_price').textContent = `$${data.ticketPrice}`;
-      document.getElementById('Event_Date').textContent = new Date(data.date).toLocaleDateString();
+      document.getElementById('Event_Date').textContent = new Date(data.eventDate).toLocaleDateString();
       document.getElementById('Event_start_time').textContent = new Date(`1970-01-01T${data.startTime}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       document.getElementById('Event_end_time').textContent = new Date(`1970-01-01T${data.endTime}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       document.getElementById('Event_Location').textContent = data.location;
       document.getElementById('available_and_total_seats').textContent = `${data.availableSeats}/${data.totalSeats}`;
       document.getElementById('location_url').src = data.locationUrl;
-      document.getElementById('event_category').textContent = data.category.categoryName;
-      document.getElementById('event_type').textContent = data.type.typeName;
+      // No category and type objects in the response, so simply remove those lines
+      // If you have a mapping for categoryId and typeId, you can use that
       document.getElementById('event_title').textContent = data.title;
-      document.getElementById('organizer_name').textContent = `${data.organizer.firstName} ${data.organizer.lastName}`;
       document.getElementById('event_description').textContent = data.description;
       document.getElementById('event_banner').src = data.bannerUrl;
+      document.getElementById('event_thumbnail').src = data.thumbnailUrl;
+      document.getElementById('what_to_expect').textContent = data.whatToExpect;
+      document.getElementById('highlights').textContent = data.highlights;
   })
   .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
   });
+ 
+// get the catregory and type dynamiclly later 
 
   
   async function fetchEventSchedule(eventId) {
@@ -159,7 +172,7 @@ function populateSchedule(schedule) {
 
 // Call this function with the specific event ID you want to fetch the schedule for
 // You can change the event ID or call this function dynamically based on your application's logic
-fetchEventSchedule(1); // Example event ID
+fetchEventSchedule(eventId); // Example event ID
 
 
 async function fetchEventDetails(eventId) {
@@ -241,3 +254,57 @@ document.getElementById('joinEventButton').addEventListener('click', (event) => 
     // Redirect to the cart page
     window.location.href = 'cart.html';
 });
+
+// Define the API URL
+const apiUrl2 = `https://localhost:7293/api/EventDetails/${eventId}/speakers`;
+
+// Fetch the event details
+fetch(apiUrl2)
+  .then(response => {
+      if (!response.ok) {
+          throw new Error('Network response was not ok');
+      }
+      return response.json();
+  })
+  .then(data => {
+      // Clear existing content (if any)
+      const instructorsWrap = document.querySelector('.courses__instructors-wrap');
+      instructorsWrap.innerHTML = ''; // Clear any existing instructors
+
+      // Check if speaker data is available
+      if (data.length > 0) {
+          data.forEach(speaker => {
+              // Create a new div for each speaker
+              const container = document.getElementById('speakers_container');
+              const instructorDiv = document.createElement('div');
+              instructorDiv.classList.add('courses__instructors-thumb');
+              
+              // Create the inner HTML structure for the speaker
+              instructorDiv.innerHTML = `
+
+                  <img src="${speaker.profileImageUrl}" alt="${speaker.name}">
+                  <div class="courses__instructors-content">
+                      <h2 class="title" id="name">${speaker.name}</h2>
+                      <span class="designation" id="role">${speaker.role}</span>
+                      <p id="bio">${speaker.bio}</p>
+                      <div class="instructor__social">
+                          <ul class="list-wrap justify-content-start">
+                              <li><a id="facebookUrl" href="${speaker.facebookUrl}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                              <li><a id="twitterUrl" href="${speaker.twitterUrl}" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                              <li><a id="whatsAppUrl" href="${speaker.whatsAppUrl}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                              <li><a id="instagramUrl" href="${speaker.instagramUrl}" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                          </ul>
+                      </div>
+                  </div>
+              `;
+
+              // Append the new speaker div to the instructors wrap
+              instructorsWrap.appendChild(instructorDiv);
+          });
+      } else {
+          console.error('No speaker data available.');
+      }
+  })
+  .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+  });

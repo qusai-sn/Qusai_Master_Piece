@@ -1,4 +1,5 @@
-﻿using MasterPiece.Models;
+﻿using MasterPiece.DTO;
+using MasterPiece.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
@@ -45,10 +46,10 @@ namespace MasterPiece.Services
                 return null;
             }
 
-            var eventEntity = await _context.Events
-                .Where(e => e.EventId == eventId)
-                .Select(e => e.Highlights)
-                .FirstOrDefaultAsync();
+            var eventEntity =  await _context.Events
+                                    .Where(e => e.EventId == eventId)
+                                    .Select(e => e.Highlights)
+                                    .FirstOrDefaultAsync();
 
             return eventEntity;
         }
@@ -68,8 +69,34 @@ namespace MasterPiece.Services
             return eventSessions;
         }
 
+         public async Task<IEnumerable<Speaker>> GetEventSpeakers(int eventId)
+        {
+            if (eventId <= 0)
+            {
+                return null;
+            }
 
+            var speakers = await _context.Speakers
+                .Where(s => s.Events.Any(e => e.EventId == eventId)) // Join Speakers with the Event
+                .ToListAsync();
 
+            return speakers;
+        }
+
+        public async Task<IEnumerable<EventSummaryDto>> GetEventSummariesAsync()
+        {
+            return await _context.Events
+                .Select(e => new EventSummaryDto
+                {
+                    EventId = e.EventId,
+                    Title = e.Title,
+                    Description = e.Description,
+                    ThumbnailUrl = e.ThumbnailUrl,          // Assuming this property exists
+                    Category = e.Category.CategoryName,     // Adjust according to your model
+                    Price = e.TicketPrice                   // Adjust if you have a specific price logic
+                })
+                .ToListAsync();
+        }
 
 
     }

@@ -11,6 +11,12 @@ public partial class Ticket
 
     public int? UserId { get; set; }
 
+    public string? Qrcode { get; set; }
+
+    public string? TicketType { get; set; }
+
+    public decimal? DonationLimi { get; set; }
+
     public DateTime? PurchaseDate { get; set; }
 
     public decimal? Price { get; set; }
