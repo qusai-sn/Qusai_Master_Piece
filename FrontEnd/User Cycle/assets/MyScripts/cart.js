@@ -5,7 +5,8 @@ function displayTicketsInCart() {
 
     // Clear existing rows in the table body
     cartTableBody.innerHTML = '';
-
+    let total = 0; // Initialize total
+    let subtotal = 0; // Initialize subtotal
     if (ticketData) {
         // Parse the ticket data as JSON
         const tickets = JSON.parse(ticketData);
@@ -14,6 +15,9 @@ function displayTicketsInCart() {
         tickets.forEach(ticket => {
             const row = document.createElement('tr'); // Create a new table row
 
+            subtotal += ticket.subtotal; // Add the subtotal of each ticket
+            total += ticket.price * ticket.quantity; // Add the total price based on quantity
+            
             // Populate the row with ticket details
             row.innerHTML = `
                 <td class="product__thumb">
@@ -37,6 +41,15 @@ function displayTicketsInCart() {
             // Append the row to the table body
             cartTableBody.appendChild(row);
         });
+
+
+        // Display the total and subtotal values somewhere on the page (e.g., in the cart summary)
+        document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+        document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+
+        
+  
+
     } else {
         // Optional: Display a message if no tickets are found
         const row = document.createElement('tr');
