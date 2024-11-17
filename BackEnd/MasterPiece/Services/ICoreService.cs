@@ -13,6 +13,7 @@ namespace MasterPiece.Services
     public interface IUserService
     {
         Task<UserProfileDto> GetUserProfileAsync(int userId);
+        Task<MyProfileDto> GetMyProfileAsync(int userId);
         Task<IEnumerable<EventListDto>> GetAttendedEventsAsync(int userId);
         Task<UserProfileResponseDto> UpdateProfileAsync(UpdateProfileDto updateProfile);
         //Task<bool> ChangePasswordAsync(ChangePasswordDto changePassword);
@@ -93,6 +94,36 @@ namespace MasterPiece.Services
                         EventDate = t.Event.EventDate ?? default,
                         Location = t.Event.Location
                     })
+            };
+        }
+
+
+        public async Task<MyProfileDto> GetMyProfileAsync(int userId)
+        {
+            var user = await _context.Users
+                .Include(u => u.Tickets)
+                    .ThenInclude(t => t.Event)
+                .FirstOrDefaultAsync(u => u.UserId == userId);
+
+            if (user == null)
+                return null;
+
+            return new MyProfileDto
+            {
+
+                // user profile data 
+
+                UserId = user.UserId,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Username =user.Username,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Biography = user.Biography
+
+                
+
+                
             };
         }
 

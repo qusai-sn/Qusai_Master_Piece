@@ -42,6 +42,18 @@
         public IEnumerable<EventListDto> AttendedEvents { get; set; } // list of attendded events 
     }
 
+    public class MyProfileDto
+    {
+        public int UserId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Biography { get; set; }
+
+    }
+
 
 
     public class TicketDto

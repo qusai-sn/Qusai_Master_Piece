@@ -27,6 +27,20 @@ public class UserProfileController : ControllerBase
     }
 
 
+    // Get My profile 
+
+    [HttpGet("MyProfile/{userId}")]
+    public async Task<ActionResult<MyProfileDto>> GetMyProfile(int userId)
+    {
+        var profile = await _userService.GetMyProfileAsync(userId);
+        if (profile == null)
+            return NotFound();
+
+        return Ok(profile);
+    }
+
+
+
     // get Attended events
 
     [HttpGet("{userId}/attended-events")]

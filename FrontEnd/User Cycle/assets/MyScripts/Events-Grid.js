@@ -23,7 +23,7 @@ fetch(apiUrl)
                 eventDiv.innerHTML = `
                     <div class="courses__item shine__animate-item">
                         <div class="courses__item-thumb">
-                            <a href="events-details.html" class="shine__animate-link">
+                            <a href="events-details.html?id=${event.eventId}" class="shine__animate-link">
                                 <img src="${event.thumbnailUrl}" alt="${event.title} Poster">
                             </a>
                         </div>
