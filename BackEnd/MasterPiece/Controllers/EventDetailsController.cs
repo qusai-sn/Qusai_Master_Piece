@@ -13,11 +13,17 @@ namespace MasterPiece.Controllers
     {
         private readonly IEventService _eventService;
 
+
+
+
         // Inject the IEventService through the constructor
         public EventDetailsController(IEventService eventService)
         {
             _eventService = eventService;
         }
+
+
+
 
         // GET: api/EventDetails/GetAllEvents
         [HttpGet("GetAllEvents")]
@@ -26,6 +32,9 @@ namespace MasterPiece.Controllers
             var events = await _eventService.GetAllEventsAsync();
             return Ok(events);
         }
+
+
+
 
         // GET: api/EventDetails/{id}
         [HttpGet("{id}")]
@@ -45,6 +54,9 @@ namespace MasterPiece.Controllers
             return Ok(eventDetails);
         }
 
+
+
+
         // GET: api/EventDetails/{id}/highlights
         [HttpGet("{id}/highlights")]
         public async Task<IActionResult> GetEventHighlights(int id)
@@ -62,6 +74,9 @@ namespace MasterPiece.Controllers
 
             return Ok(highlights);
         }
+
+
+
 
         // GET: api/EventDetails/{id}/schedule
         [HttpGet("{id}/schedule")]
@@ -81,6 +96,9 @@ namespace MasterPiece.Controllers
             return Ok(schedule);
         }
 
+
+
+
         // GET: api/EventDetails/{id}/speakers
         [HttpGet("{id}/speakers")]
         public async Task<IActionResult> GetEventSpeakers(int id)
@@ -99,11 +117,17 @@ namespace MasterPiece.Controllers
             return Ok(speakers);
         }
 
+
+
+
         [HttpGet("summaries")]
         public async Task<ActionResult<IEnumerable<EventSummaryDto>>> GetEventSummaries()
         {
             var eventSummaries = await _eventService.GetEventSummariesAsync();
             return Ok(eventSummaries);
         }
+
+
+
     }
 }

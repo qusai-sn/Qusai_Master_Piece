@@ -27,6 +27,9 @@ builder.Services.AddDbContext<MasterPieceContext>(options =>
 
 // Service injection for EventService
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
 
 var app = builder.Build();
 
