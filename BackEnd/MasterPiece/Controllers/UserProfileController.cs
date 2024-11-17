@@ -13,6 +13,9 @@ public class UserProfileController : ControllerBase
         _userService = userService;
     }
 
+
+    // Get profile 
+
     [HttpGet("{userId}")]
     public async Task<ActionResult<UserProfileDto>> GetUserProfile(int userId)
     {
@@ -24,6 +27,7 @@ public class UserProfileController : ControllerBase
     }
 
 
+    // get Attended events
 
     [HttpGet("{userId}/attended-events")]
     public async Task<ActionResult<IEnumerable<EventListDto>>> GetAttendedEvents(int userId)
@@ -31,4 +35,26 @@ public class UserProfileController : ControllerBase
         var events = await _userService.GetAttendedEventsAsync(userId);
         return Ok(events);
     }
+
+
+    // Update user Profile
+
+    [HttpPut("update")]
+    public async Task<ActionResult<UserProfileResponseDto>> UpdateProfile(UpdateProfileDto updateProfile)
+    {
+        try
+        {
+            var updatedProfile = await _userService.UpdateProfileAsync(updateProfile);
+            if (updatedProfile == null)
+                return NotFound();
+
+            return Ok(updatedProfile);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
+
+
 }

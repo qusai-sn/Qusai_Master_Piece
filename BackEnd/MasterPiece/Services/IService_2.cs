@@ -14,6 +14,8 @@ namespace MasterPiece.Services
     {
         Task<UserProfileDto> GetUserProfileAsync(int userId);
         Task<IEnumerable<EventListDto>> GetAttendedEventsAsync(int userId);
+        Task<UserProfileResponseDto> UpdateProfileAsync(UpdateProfileDto updateProfile);
+        //Task<bool> ChangePasswordAsync(ChangePasswordDto changePassword);
     }
 
 
@@ -23,6 +25,12 @@ namespace MasterPiece.Services
     {
         Task<IEnumerable<TicketDto>> ProcessPaymentAsync(PaymentRequestDto paymentRequest);
     }
+
+
+
+
+
+
 
 
 
@@ -107,7 +115,92 @@ namespace MasterPiece.Services
                 })
                 .ToListAsync();
         }
+
+
+        // update profile :
+        public async Task<UserProfileResponseDto> UpdateProfileAsync(UpdateProfileDto updateProfile)
+        {
+            var user = await _context.Users.FindAsync(updateProfile.UserId);
+            if (user == null)
+                return null;
+
+            // Check if email is being changed and ensure it's unique
+            if (user.Email != updateProfile.Email)
+            {
+                var emailExists = await _context.Users
+                    .AnyAsync(u => u.Email == updateProfile.Email && u.UserId != updateProfile.UserId);
+                if (emailExists)
+                    throw new Exception("Email already in use");
+            }
+
+            // Update user properties
+            user.FirstName = updateProfile.FirstName;
+            user.LastName = updateProfile.LastName;
+            user.Email = updateProfile.Email;
+            user.PhoneNumber = updateProfile.PhoneNumber;
+            user.Username = updateProfile.Username;
+            user.Biography = updateProfile.Biography;
+
+            await _context.SaveChangesAsync();
+
+            return new UserProfileResponseDto
+            {
+                UserId = user.UserId,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Username = user.Username,
+                Biography = user.Biography,
+                IsOrganizer = user.IsOrganizer ?? false
+            };
+        }
+
+
+        //public async Task<bool> ChangePasswordAsync(ChangePasswordDto changePassword)
+        //{
+        //    var user = await _context.Users.FindAsync(changePassword.UserId);
+        //    if (user == null)
+        //        return false;
+
+        //    // Verify current password
+        //    if (!await ValidatePasswordAsync(user.UserId, changePassword.CurrentPassword))
+        //        throw new Exception("Current password is incorrect");
+
+        //    // Verify new password matches confirmation
+        //    if (changePassword.NewPassword != changePassword.ConfirmPassword)
+        //        throw new Exception("New password and confirmation do not match");
+
+        //    // Generate new salt and hash for the new password
+        //    var newSalt = GenerateSalt();
+        //    var newHash = HashPassword(changePassword.NewPassword, newSalt);
+
+        //    user.PasswordHash = newHash;
+        //    user.Salt = newSalt;
+
+        //    await _context.SaveChangesAsync();
+        //    return true;
+        //}
+
+
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
