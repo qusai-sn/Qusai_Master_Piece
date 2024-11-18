@@ -1,0 +1,388 @@
+USE [master]
+GO
+/****** Object:  Database [MasterPiece]    Script Date: 11/18/2024 9:07:48 AM ******/
+CREATE DATABASE [MasterPiece]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'MasterPiece', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\MasterPiece.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'MasterPiece_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL16.MSSQLSERVER\MSSQL\DATA\MasterPiece_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT, LEDGER = OFF
+GO
+ALTER DATABASE [MasterPiece] SET COMPATIBILITY_LEVEL = 160
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [MasterPiece].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [MasterPiece] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [MasterPiece] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [MasterPiece] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [MasterPiece] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [MasterPiece] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [MasterPiece] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [MasterPiece] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [MasterPiece] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [MasterPiece] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [MasterPiece] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [MasterPiece] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [MasterPiece] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [MasterPiece] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [MasterPiece] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [MasterPiece] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [MasterPiece] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [MasterPiece] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [MasterPiece] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [MasterPiece] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [MasterPiece] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [MasterPiece] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [MasterPiece] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [MasterPiece] SET RECOVERY FULL 
+GO
+ALTER DATABASE [MasterPiece] SET  MULTI_USER 
+GO
+ALTER DATABASE [MasterPiece] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [MasterPiece] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [MasterPiece] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [MasterPiece] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [MasterPiece] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [MasterPiece] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+EXEC sys.sp_db_vardecimal_storage_format N'MasterPiece', N'ON'
+GO
+ALTER DATABASE [MasterPiece] SET QUERY_STORE = ON
+GO
+ALTER DATABASE [MasterPiece] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30), DATA_FLUSH_INTERVAL_SECONDS = 900, INTERVAL_LENGTH_MINUTES = 60, MAX_STORAGE_SIZE_MB = 1000, QUERY_CAPTURE_MODE = AUTO, SIZE_BASED_CLEANUP_MODE = AUTO, MAX_PLANS_PER_QUERY = 200, WAIT_STATS_CAPTURE_MODE = ON)
+GO
+USE [MasterPiece]
+GO
+/****** Object:  Table [dbo].[Announcements]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Announcements](
+	[AnnouncementID] [int] IDENTITY(1,1) NOT NULL,
+	[EventID] [int] NULL,
+	[OrganizerID] [int] NULL,
+	[Message] [nvarchar](max) NULL,
+	[DateSent] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[AnnouncementID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EventCategories]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EventCategories](
+	[CategoryID] [int] IDENTITY(1,1) NOT NULL,
+	[CategoryName] [nvarchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[CategoryID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Events]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Events](
+	[EventID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](255) NULL,
+	[Description] [nvarchar](max) NULL,
+	[EventDate] [date] NULL,
+	[StartTime] [time](7) NULL,
+	[EndTime] [time](7) NULL,
+	[Location] [nvarchar](255) NULL,
+	[TotalSeats] [int] NULL,
+	[AvailableSeats] [int] NULL,
+	[TicketPrice] [decimal](10, 2) NULL,
+	[CategoryID] [int] NULL,
+	[TypeID] [int] NULL,
+	[OrganizerID] [int] NULL,
+	[BannerURL] [nvarchar](255) NULL,
+	[Location_URL] [nvarchar](255) NULL,
+	[Status] [nvarchar](50) NULL,
+	[PlanID] [int] NULL,
+	[ThumbnailURL] [nvarchar](255) NULL,
+	[WhatToExpect] [nvarchar](max) NULL,
+	[Highlights] [nvarchar](max) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EventID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EventSessions]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EventSessions](
+	[SessionID] [int] IDENTITY(1,1) NOT NULL,
+	[EventID] [int] NULL,
+	[SessionTime] [nvarchar](50) NULL,
+	[SessionTitle] [nvarchar](255) NULL,
+	[SessionDescription] [nvarchar](max) NULL,
+	[SessionType] [nvarchar](50) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SessionID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EventSpeakers]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EventSpeakers](
+	[EventID] [int] NOT NULL,
+	[SpeakerID] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[EventID] ASC,
+	[SpeakerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[EventTypes]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[EventTypes](
+	[TypeID] [int] IDENTITY(1,1) NOT NULL,
+	[TypeName] [nvarchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TypeID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Payments]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Payments](
+	[PaymentID] [int] IDENTITY(1,1) NOT NULL,
+	[EventID] [int] NULL,
+	[UserID] [int] NULL,
+	[TransactionID] [nvarchar](255) NULL,
+	[PaymentAmount] [decimal](10, 2) NULL,
+	[PaymentDate] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PaymentID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Plans]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Plans](
+	[PlanID] [int] IDENTITY(1,1) NOT NULL,
+	[PlanName] [nvarchar](255) NULL,
+	[DurationInDays] [int] NULL,
+	[CommissionAmount] [decimal](10, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[PlanID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Reviews]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Reviews](
+	[ReviewID] [int] IDENTITY(1,1) NOT NULL,
+	[EventID] [int] NULL,
+	[UserID] [int] NULL,
+	[Rating] [int] NULL,
+	[ReviewText] [nvarchar](max) NULL,
+	[ReviewDate] [datetime] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[ReviewID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Speakers]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Speakers](
+	[SpeakerID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](255) NULL,
+	[Role] [nvarchar](255) NULL,
+	[Bio] [nvarchar](max) NULL,
+	[FacebookURL] [nvarchar](255) NULL,
+	[TwitterURL] [nvarchar](255) NULL,
+	[WhatsAppURL] [nvarchar](255) NULL,
+	[InstagramURL] [nvarchar](255) NULL,
+	[ProfileImageURL] [nvarchar](255) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[SpeakerID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Tickets]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Tickets](
+	[TicketID] [int] IDENTITY(1,1) NOT NULL,
+	[EventID] [int] NULL,
+	[UserID] [int] NULL,
+	[QRCode] [nvarchar](255) NULL,
+	[TicketType] [nvarchar](50) NULL,
+	[DonationLimi] [decimal](10, 2) NULL,
+	[PurchaseDate] [datetime] NULL,
+	[Price] [decimal](10, 2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[TicketID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[QRCode] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Users]    Script Date: 11/18/2024 9:07:48 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Users](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[FirstName] [nvarchar](255) NULL,
+	[LastName] [nvarchar](255) NULL,
+	[Email] [nvarchar](255) NULL,
+	[PasswordHash] [nvarchar](255) NULL,
+	[Salt] [nvarchar](255) NULL,
+	[PhoneNumber] [nvarchar](20) NULL,
+	[Username] [nvarchar](255) NULL,
+	[Biography] [nvarchar](max) NULL,
+	[IsOrganizer] [bit] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[UserID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	[Email] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Announcements] ADD  DEFAULT (getdate()) FOR [DateSent]
+GO
+ALTER TABLE [dbo].[Events] ADD  DEFAULT ('Pending') FOR [Status]
+GO
+ALTER TABLE [dbo].[Payments] ADD  DEFAULT (getdate()) FOR [PaymentDate]
+GO
+ALTER TABLE [dbo].[Reviews] ADD  DEFAULT (getdate()) FOR [ReviewDate]
+GO
+ALTER TABLE [dbo].[Tickets] ADD  DEFAULT (getdate()) FOR [PurchaseDate]
+GO
+ALTER TABLE [dbo].[Users] ADD  DEFAULT ((0)) FOR [IsOrganizer]
+GO
+ALTER TABLE [dbo].[Announcements]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+GO
+ALTER TABLE [dbo].[Announcements]  WITH CHECK ADD FOREIGN KEY([OrganizerID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Events]  WITH CHECK ADD FOREIGN KEY([CategoryID])
+REFERENCES [dbo].[EventCategories] ([CategoryID])
+GO
+ALTER TABLE [dbo].[Events]  WITH CHECK ADD FOREIGN KEY([OrganizerID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Events]  WITH CHECK ADD FOREIGN KEY([PlanID])
+REFERENCES [dbo].[Plans] ([PlanID])
+GO
+ALTER TABLE [dbo].[Events]  WITH CHECK ADD FOREIGN KEY([TypeID])
+REFERENCES [dbo].[EventTypes] ([TypeID])
+GO
+ALTER TABLE [dbo].[EventSessions]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+GO
+ALTER TABLE [dbo].[EventSpeakers]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[EventSpeakers]  WITH CHECK ADD FOREIGN KEY([SpeakerID])
+REFERENCES [dbo].[Speakers] ([SpeakerID])
+ON UPDATE CASCADE
+ON DELETE CASCADE
+GO
+ALTER TABLE [dbo].[Payments]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+GO
+ALTER TABLE [dbo].[Payments]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Reviews]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+GO
+ALTER TABLE [dbo].[Reviews]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Tickets]  WITH CHECK ADD FOREIGN KEY([EventID])
+REFERENCES [dbo].[Events] ([EventID])
+GO
+ALTER TABLE [dbo].[Tickets]  WITH CHECK ADD FOREIGN KEY([UserID])
+REFERENCES [dbo].[Users] ([UserID])
+GO
+ALTER TABLE [dbo].[Reviews]  WITH CHECK ADD CHECK  (([Rating]>=(1) AND [Rating]<=(5)))
+GO
+ALTER TABLE [dbo].[Tickets]  WITH CHECK ADD CHECK  (([TicketType]='Donation' OR [TicketType]='Paid' OR [TicketType]='Free'))
+GO
+USE [master]
+GO
+ALTER DATABASE [MasterPiece] SET  READ_WRITE 
+GO
