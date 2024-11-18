@@ -29,6 +29,39 @@
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/tg-cursor.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <style> 
+        .alert {
+                padding: 15px;
+                border-radius: 4px;
+                margin-bottom: 20px;
+                animation: slideIn 0.5s ease-in-out;
+            }
+
+            .alert-success {
+                background-color: #d4edda;
+                border-color: #c3e6cb;
+                color: #155724;
+            }
+
+            .alert-danger {
+                background-color: #f8d7da;
+                border-color: #f5c6cb;
+                color: #721c24;
+            }
+
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+    </style>
+
 </head>
 
 <body>
@@ -380,22 +413,11 @@
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <div class="form-grp">
-                                                                    <label for="skill">Skill/Occupation</label>
-                                                                    <input id="skill" type="text" value="Full Stack Developer">
+                                                                    <label for="email">Email</label>
+                                                                    <input id="email" type="email" value="Email@Email.com">
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-grp select-grp">
-                                                                    <label for="displayname">Display Name Publicly As</label>
-                                                                    <select id="displayname" name="displayname">
-                                                                        <option value="Emily Hannah">Emily Hannah</option>
-                                                                        <option value="John">John</option>
-                                                                        <option value="Due">Due</option>
-                                                                        <option value="Due John">Due John</option>
-                                                                        <option value="johndue">johndue</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
+                                                           
                                                         </div>
                                                         <div class="form-grp">
                                                             <label for="bio">Bio</label>
@@ -611,6 +633,7 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+    <script src="assets/MyScripts/UpdateUserProfile.js"></script> 
 </body>
 
 

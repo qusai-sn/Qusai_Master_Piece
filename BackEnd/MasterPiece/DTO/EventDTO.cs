@@ -116,5 +116,22 @@
         public decimal Price { get; set; }
     }
 
+    public class EventProfileDto
+    {
+        public int EventId { get; set; }
+        public string Title { get; set; }
+        public string ThumbnailUrl { get; set; }
+        public string Category { get; set; }
+        public string Type { get; set; }
+    
+    }
+    public class DashboardStatsDto
+    {
+        public int EventsInWaiting { get; set; }
+        public int ActiveEvents { get; set; }
+        public int AttendedEvents { get; set; }
+        public List<EventProfileDto> LatestEvents { get; set; }
+    }
+
 
 }

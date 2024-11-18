@@ -29,6 +29,15 @@
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/tg-cursor.css">
     <link rel="stylesheet" href="assets/css/main.css">
+    <style>
+        .events-container .row {
+            display: flex;
+            flex-wrap: wrap;
+            padding-bottom: 25px;
+        }
+    </style>
+ 
+
 </head>
 
 <body>
@@ -320,7 +329,7 @@
                         <div class="col-lg-9">
                             <div class="dashboard__content-wrap dashboard__content-wrap-two">
                                 <div class="dashboard__content-title">
-                                    <h4 class="title">Enrolled Courses</h4>
+                                    <h4 class="title">Enrolled Events</h4>
                                 </div>
                                 <div class="row">
                                     <div class="col-12">
@@ -329,343 +338,47 @@
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link active" id="all-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" type="button"
                                                         role="tab" aria-controls="all-tab-pane" aria-selected="true">
-                                                        Attended Events
+                                                        Latest Events
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="design-tab" data-bs-toggle="tab" data-bs-target="#design-tab-pane" type="button"
                                                         role="tab" aria-controls="design-tab-pane" aria-selected="false">
-                                                        Active Events
+                                                        Ended Events
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
                                                     <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business-tab-pane" type="button"
                                                         role="tab" aria-controls="business-tab-pane" aria-selected="false">
-                                                        Ended Events
+                                                        Active Events
                                                     </button>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="tab-content" id="courseTabContent">
+                                            <!-- Latest Events Tab -->
                                             <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
-                                                <div class="swiper dashboard-courses-active">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/art_poster.jpg" alt="Arts Festival Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                        
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Art & Design</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                            
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Annual Arts Handcraft Festival 2021</a></h5>
-                                                                        <p class="author">Hosted By Leading Artist</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                     
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/bussiness6.jpg" alt="Business Conference Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                         <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Business</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Conference</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">2021 Business Conference: Live Streaming Access</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                         
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/tach_event.jpg" alt="Tech Event Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Technology</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Seminar</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Glitch: The Ultimate Tech Symposium</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/courses/course_thumb09.jpg" alt="Accelerating UX Maturity With A Breakthrough Project">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="course.html">Language</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <h5 class="title"><a href="course-details.html">Accelerating UX Maturity With A Breakthrough Project</a></h5>
-                                                                        <p class="author">By <a href="#">David Millar</a></p>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                       
+                                                <div class="events-container">
+                                                    <div class="row" id="events-slider-1">
+                                                        <!-- Cards will be inserted here -->
                                                     </div>
                                                 </div>
                                             </div>
+                                        
+                                            <!-- Ended Events Tab -->
                                             <div class="tab-pane fade" id="design-tab-pane" role="tabpanel" aria-labelledby="design-tab" tabindex="0">
-                                                <div class="swiper dashboard-courses-active">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/art_poster.jpg" alt="Arts Festival Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                        
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Art & Design</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                            
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Annual Arts Handcraft Festival 2021</a></h5>
-                                                                        <p class="author">Hosted By Leading Artist</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                     
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/bussiness6.jpg" alt="Business Conference Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                         <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Business</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Conference</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">2021 Business Conference: Live Streaming Access</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                         
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/tach_event.jpg" alt="Tech Event Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Technology</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Seminar</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Glitch: The Ultimate Tech Symposium</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/courses/course_thumb09.jpg" alt="Accelerating UX Maturity With A Breakthrough Project">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="course.html">Language</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <h5 class="title"><a href="course-details.html">Accelerating UX Maturity With A Breakthrough Project</a></h5>
-                                                                        <p class="author">By <a href="#">David Millar</a></p>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
+                                                <div class="events-container">
+                                                    <div class="row" id="events-slider-2">
+                                                        <!-- Cards will be inserted here -->
                                                     </div>
                                                 </div>
                                             </div>
+                                        
+                                            <!-- Active Events Tab -->
                                             <div class="tab-pane fade" id="business-tab-pane" role="tabpanel" aria-labelledby="business-tab" tabindex="0">
-                                                <div class="swiper dashboard-courses-active">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/art_poster.jpg" alt="Arts Festival Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                        
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Art & Design</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                            
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Annual Arts Handcraft Festival 2021</a></h5>
-                                                                        <p class="author">Hosted By Leading Artist</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                     
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/bussiness6.jpg" alt="Business Conference Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                         <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Business</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Conference</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">2021 Business Conference: Live Streaming Access</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                         
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/new/tach_event.jpg" alt="Tech Event Poster">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="event.html">Technology</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">Seminar</a>
-                                                                            </li>
-                                                                         </ul>
-                                                                        <h5 class="title"><a href="events-details.html">Glitch: The Ultimate Tech Symposium</a></h5>
-                                                                        <p class="author">Hosted by Leading Industry Experts</p>
-                                                                         
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="swiper-slide">
-                                                            <div class="col">
-                                                                <div class="courses__item shine__animate-item">
-                                                                    <div class="courses__item-thumb">
-                                                                        <a href="events-details.html" class="shine__animate-link">
-                                                                            <img src="assets/img/courses/course_thumb09.jpg" alt="Accelerating UX Maturity With A Breakthrough Project">
-                                                                        </a>
-                                                                    </div>
-                                                                    <div class="courses__item-content">
-                                                                        <ul class="courses__item-meta list-wrap">
-                                                                            <li class="courses__item-tag">
-                                                                                <a href="course.html">Language</a>
-                                                                            </li>
-                                                                            <li class="courses__item-tag"> 
-                                                                                <a href="event.html">WorkShop</a>
-                                                                            </li>
-                                                                        </ul>
-                                                                        <h5 class="title"><a href="course-details.html">Accelerating UX Maturity With A Breakthrough Project</a></h5>
-                                                                        <p class="author">By <a href="#">David Millar</a></p>
-                                                                        
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
+                                                <div class="events-container">
+                                                    <div class="row" id="events-slider-3">
+                                                        <!-- Cards will be inserted here -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -820,11 +533,15 @@
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/aos.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets\MyScripts\Profile_Events.js"></script>
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+ 
 </body>
 
 
 <!-- Mirrored from html.themegenix.com/skillgro/student-enrolled-courses.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 17 Sep 2024 11:07:04 GMT -->
 </html>
+
+ 

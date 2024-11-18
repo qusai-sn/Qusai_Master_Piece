@@ -2,7 +2,7 @@
 using MasterPiece.Services;
 using MasterPiece.DTO;
 
-namespace MasterPiece.Controllers
+namespace MasterPiece.Controllers.Profile
 {
     [ApiController]
     [Route("api/[controller]")]

@@ -221,20 +221,6 @@ namespace MasterPiece.Services
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public class PaymentService : IPaymentService
     {
         private readonly MasterPieceContext _context;

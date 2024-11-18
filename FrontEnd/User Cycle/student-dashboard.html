@@ -330,7 +330,7 @@
                                                 <i class="skillgro-tutorial"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="4"></span>
+                                                <span id="in-waiting" class="count odometer">0</span>
                                                 <p>Events in Waiting</p>
                                             </div>
                                         </div>
@@ -341,7 +341,7 @@
                                                 <i class="skillgro-tutorial"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="2"></span>
+                                                <span id="active-events" class="count odometer">0</span>
                                                 <p>Active Events</p>
                                             </div>
                                         </div>
@@ -352,7 +352,7 @@
                                                 <i class="skillgro-tutorial"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="10"></span>
+                                                <span id="attended-events" class="count odometer">0</span>
                                                 <p>Attended Events</p>
                                             </div>
                                         </div>
@@ -364,7 +364,7 @@
                                     <h4 class="title">My Latest Events </h4>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col" id="event-card">
                                         <div class="courses__item shine__animate-item">
                                             <div class="courses__item-thumb">
                                                 <a href="events-details.html" class="shine__animate-link">
@@ -381,7 +381,6 @@
                                                     </li>
                                                 </ul>
                                                 <h5 class="title"><a href="events-details.html">2020 Business Insight Conference</a></h5>
-                                                <p class="author">Leading Strategies and Innovations</p>
                                                  
                                             </div>
                                         </div>
@@ -582,6 +581,7 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+    <script src="assets/MyScripts/Attendee-Profile-Dashboard.js"></script>  
 </body>
 
 

@@ -32,7 +32,8 @@ builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<ITicketsService, TicketService>();
-
+builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 
 
