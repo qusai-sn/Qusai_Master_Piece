@@ -25,10 +25,15 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<MasterPieceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterPiece_Connection_string")));
 
+
+
 // Service injection for EventService
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
+builder.Services.AddScoped<ITicketsService, TicketService>();
+
+
 
 
 var app = builder.Build();

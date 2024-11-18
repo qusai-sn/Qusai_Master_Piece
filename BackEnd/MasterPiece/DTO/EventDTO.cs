@@ -108,4 +108,13 @@
 
     }
 
+    public class SimpleTicketDto
+    {
+        public int EventId { get; set; }
+        public string EventTitle { get; set; }
+        public DateTime PurchaseDate { get; set; }
+        public decimal Price { get; set; }
+    }
+
+
 }
