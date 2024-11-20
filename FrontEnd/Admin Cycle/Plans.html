@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Plans Management</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Same CSS references as other pages -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+    <link href="assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Same navbar and sidebar as other pages -->
+           <!-- Topbar Start -->
+        <div class="navbar-custom">
+          <ul class="list-unstyled topnav-menu float-right mb-0">
+              <li class="dropdown notification-list">
+                  <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                      <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                      <span class="pro-user-name ml-1">
+                          Admin <i class="mdi mdi-chevron-down"></i>
+                      </span>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                      <a href="javascript:void(0);" class="dropdown-item notify-item">
+                          <i class="mdi mdi-logout-variant"></i>
+                          <span>Logout</span>
+                      </a>
+                  </div>
+              </li>
+          </ul>
+
+          <!-- LOGO -->
+          <div class="logo-box">
+              <a href="index.html" class="logo text-center logo-dark">
+                  <span class="logo-lg">
+                      <img src="assets/images/logo-dark.png" alt="" height="24">
+                  </span>
+                  <span class="logo-sm">
+                      <img src="assets/images/logo-sm.png" alt="" height="24">
+                  </span>
+              </a>
+          </div>
+
+          <ul class="list-unstyled topnav-menu topnav-menu-left m-0">
+              <li>
+                  <button class="button-menu-mobile">
+                      <i class="mdi mdi-menu"></i>
+                  </button>
+              </li>
+          </ul>
+      </div>
+      <!-- end Topbar -->
+
+      <!-- Left Sidebar Start -->
+      <div class="left-side-menu">
+          <div class="user-box">
+              <div class="float-left">
+                  <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+              </div>
+              <div class="user-info">
+                  <a href="#">Admin</a>
+                  <p class="text-muted m-0">Administrator</p>
+              </div>
+          </div>
+
+          <div id="sidebar-menu">
+              <ul class="metismenu" id="side-menu">
+                  <li class="menu-title">Navigation</li>
+                  <li>
+                      <a href="events.html" class="waves-effect active">
+                          <i class="fe-calendar"></i>
+                          <span> Events </span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="Events_Requests.html" class="waves-effect">
+                          <i class="fe-clipboard"></i>
+                          <span> Event Requests </span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="tickets.html" class="waves-effect">
+                          <i class="fe-ticket"></i>
+                          <span> Tickets </span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="categories.html" class="waves-effect">
+                          <i class="fe-grid"></i>
+                          <span> Categories & Types </span>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="plans.html" class="waves-effect">
+                          <i class="fe-file-text"></i>
+                          <span> Plans </span>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="clearfix"></div>
+      </div>
+      <!-- Left Sidebar End -->
+        
+        <div class="content-page">
+            <div class="content">
+                <div class="container-fluid">
+                    <!-- Title and Add Button -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <div class="page-title-right">
+                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#planModal">
+                                        <i class="mdi mdi-plus-circle mr-1"></i> Add Plan
+                                    </button>
+                                </div>
+                                <h4 class="page-title">Plans Management</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Cards -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-lg rounded-circle bg-soft-primary">
+                                        <i class="fe-users font-22 avatar-title text-primary"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="mb-1" id="totalPlans">0</h4>
+                                        <p class="text-muted mb-0">Total Plans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-lg rounded-circle bg-soft-success">
+                                        <i class="fe-check-circle font-22 avatar-title text-success"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="mb-1" id="activePlans">0</h4>
+                                        <p class="text-muted mb-0">Active Plans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card-box">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-lg rounded-circle bg-soft-info">
+                                        <i class="fe-dollar-sign font-22 avatar-title text-info"></i>
+                                    </div>
+                                    <div class="ml-3">
+                                        <h4 class="mb-1" id="totalRevenue">$0</h4>
+                                        <p class="text-muted mb-0">Total Revenue</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Plans Table -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="plansTable" class="table table-bordered dt-responsive nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Plan ID</th>
+                                                <th>Plan Name</th>
+                                                <th>Duration (Days)</th>
+                                                <th>Commission</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Same footer as other pages -->
+        </div>
+
+        <!-- Plan Modal -->
+        <div class="modal fade" id="planModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Plan Details</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="planForm">
+                            <input type="hidden" name="planId">
+                            <div class="form-group">
+                                <label>Plan Name</label>
+                                <input type="text" class="form-control" name="planName" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Duration (Days)</label>
+                                <input type="number" class="form-control" name="durationInDays" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Commission Amount</label>
+                                <input type="number" step="0.01" class="form-control" name="commissionAmount" required>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary waves-effect" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary waves-effect waves-light" id="savePlan">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+    <script src="Eventify_admin/JS/plans.js"></script>
+</body>
+</html>
