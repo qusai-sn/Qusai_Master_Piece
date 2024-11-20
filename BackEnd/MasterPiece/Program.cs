@@ -39,6 +39,8 @@ builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrganizerDashboardService, OrganizerDashboardService>();
 builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddScoped<ICreateEventService, CreateEventService>();
+
 
 
 
@@ -59,8 +61,9 @@ app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "Media")),
-    RequestPath = "/Media"   
+    RequestPath = "/Media"
 });
+
 
 app.UseRouting();
 

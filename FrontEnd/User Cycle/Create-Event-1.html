@@ -258,12 +258,10 @@
             <div class="dashboard__bg"><img src="assets/img/bg/dashboard_bg.jpg" alt=""></div>
             <div class="container">
                 <div class="dashboard__top-wrap">
-                    <div class="dashboard__top-bg" data-background="assets/img/new/banner_test.avif"></div>
+                    <div class="dashboard__top-bg" data-background="assets/img/bg/Create-Event.JPG"></div>
                     <div class="dashboard__instructor-info">
                          
-                        <div class="dashboard__instructor-info-right">
-                            <a href="instructor-dashboard.html" class="btn btn-two arrow-btn">Edit Cover Photo</a>
-                        </div>
+                       
                     </div>
                 </div>
                 <div class="dashboard__inner-wrap">
@@ -316,21 +314,25 @@
                                                                     </div>
                                                                     <div class="form-grp">
                                                                         <label for="startTime">Start Time</label>
-                                                                        <input id="startTime" type="time" value="10:00">
+                                                                        <input id="startTime" type="time" value="10:00:00">
                                                                     </div>
                                                                     <div class="form-grp">
                                                                         <label for="endTime">End Time</label>
-                                                                        <input id="endTime" type="time" value="15:00">
+                                                                        <input id="endTime" type="time" value="15:00:00">
                                                                     </div>
                                                                 </div>
                                                                 <div class="timing">
                                                                     <div class="form-grp">
-                                                                        <label for="eventDate">City</label>
-                                                                        <input id="eventDate" type="text" value="Amman">
+                                                                        <label for="Location">Location City</label>
+                                                                        <input id="Location" type="text" value="Amman">
                                                                     </div>
                                                                     <div class="form-grp">
-                                                                        <label for="startTime">Location</label>
-                                                                        <input id="startTime" type="text" value="Google map link">
+                                                                        <label for="Location-url">Location</label>
+                                                                        <input id="Location-url" type="text" value="Google map link">
+                                                                    </div>
+                                                                    <div class="form-grp">
+                                                                        <label for="total-seats">Total Seats</label>
+                                                                        <input id="total-seats" type="number " value="50">
                                                                     </div>
                                                                 </div>
 
@@ -339,25 +341,35 @@
                                                                     <div class="form-grp">
                                                                         <label for="eventType">Event Type</label>
                                                                         <select id="eventType" name="eventType">
-                                                                            <option value="Conference">Conference</option>
-                                                                            <option value="Workshop">Workshop</option>
-                                                                            <option value="Seminar">Seminar</option>
+                                                                            <option value="1">Conference</option>
+                                                                            <option value="2">Workshop</option>
+                                                                            <option value="3">Seminar</option>
                                                                         </select>
                                                                     </div> 
                                                                     <div class="form-grp">
-                                                                        <label for="eventType">Event Category</label>
-                                                                        <select id="eventType" name="eventType">
-                                                                            <option value="Art & Design">Art & Design</option>
-                                                                            <option value="Business">Business</option>
-                                                                            <option value="Data Science">Data Science</option>
-                                                                            <option value="Development">Development</option>
-                                                                            <option value="Finance">Finance</option>
-                                                                            <option value="Health & Fitness">Health & Fitness</option>
-                                                                            <option value="Lifestyle">Lifestyle</option>
+                                                                        <label for="eventCategory">Event Category</label>
+                                                                        <select id="eventCategory" name="eventCategory">
+                                                                            <option value="1">Art & Design</option>
+                                                                            <option value="2">Business</option>
+                                                                            <option value="3">Data Science</option>
+                                                                            <option value="4">Development</option>
+                                                                            <option value="5">Finance</option>
+                                                                            <option value="6">Health & Fitness</option>
+                                                                            <option value="7">Lifestyle</option>
                                                                         </select>
                                                                     </div> 
                                                                 </div>
-                                                              
+                                                                <div class="timing">
+                                                                    <div class="form-grp">
+                                                                        <label for="banner">Event banner</label>
+                                                                        <input id="banner" type="file"  >
+                                                                    </div>
+                                                                    <div class="form-grp">
+                                                                        <label for="Thumbnail">Event Thumbnail</label>
+                                                                        <input id="Thumbnail" type="file"  >
+                                                                    </div>
+                                                                   
+                                                                </div>
                                                               
                                                                 
 
@@ -374,7 +386,7 @@
                                             </div>
                                             <div class="tab-pane fade" id="itemTwo-tab-pane" role="tabpanel" aria-labelledby="itemTwo-tab" tabindex="0">
                                                 <div class="instructor__profile-form-wrap">
-                                                    <form action="#" class="instructor__profile-form">
+                                                    <form action="#" class="instructor__profile-form" id="speakerForm">
                                                         <div class="form-grp">
                                                             <label for="speakerName">Speaker Name</label>
                                                             <input id="speakerName" type="text" name="speakerName" placeholder="Enter speaker's name">
@@ -397,25 +409,25 @@
                                             </div>
                                             <div class="tab-pane fade" id="itemThree-tab-pane" role="tabpanel" aria-labelledby="itemThree-tab" tabindex="0">
                                                 <div class="instructor__profile-form-wrap">
-                                                    <form action="#" class="instructor__profile-form">
+                                                    <form action="#" class="instructor__profile-form" id="scheduleForm">
                                                         
                                                         
                                                         <div class="form-grp">
-                                                            <label for="eventDate">Activity Title</label>
-                                                            <input id="eventDate" type="text" value="Amman">
+                                                            <label for="activityTitle">Activity Title</label>
+                                                            <input id="activityTitle" type="text" value="Title">
                                                         </div>
                                                         <div class="form-grp">
-                                                            <label for="startTime">Activity Description</label>
-                                                            <input id="startTime" type="text" value="add description">
+                                                            <label for="Description">Activity Description</label>
+                                                            <input id="Description" type="text" value="add description">
                                                         </div>
                                                         
                                                         <div class="form-grp">
                                                             <label for="startTime">Start Time</label>
-                                                            <input id="startTime" type="time" value="10:00">
+                                                            <input id="startTime" type="time" value="10:00:00">
                                                         </div>
                                                         <div class="form-grp">
                                                             <label for="endTime">End Time</label>
-                                                            <input id="endTime" type="time" value="15:00">
+                                                            <input id="endTime" type="time" value="15:00:00">
                                                         </div>
                                                     
                                                     <div class="submit-btn">
@@ -426,7 +438,7 @@
                                             </div>
                                             <div class="tab-pane fade" id="itemFour-tab-pane" role="tabpanel" aria-labelledby="itemFour-tab" tabindex="0">
                                                 <div class="instructor__profile-form-wrap">
-                                                    <form action="#" class="instructor__profile-form">
+                                                    <form action="#" class="instructor__profile-form" id="ticketsForm">
                                                          
                                                         <div class="form-grp">
                                                             <label for="TicketType">Ticket Type</label>
@@ -438,12 +450,12 @@
                                                         </div>
                                                         <div class="timing">
                                                             <div class="form-grp">
-                                                                <label for="eventDate">Price</label>
-                                                                <input id="eventDate" type="number" value="Amman">
+                                                                <label for="price">Price</label>
+                                                                <input id="price" type="number" value="Amman">
                                                             </div>
                                                             <div class="form-grp">
-                                                                <label for="startTime">Donation Limit</label>
-                                                                <input id="startTime" type="number" value="Google map link">
+                                                                <label for="donationLimit">Donation Limit</label>
+                                                                <input id="donationLimit" type="number" value="100">
                                                             </div>
                                                         </div>
                                                         <div class="submit-btn mt-25">
@@ -463,7 +475,7 @@
                             <br>
                             <div class="dashboard__content-wrap" style="display: flex; justify-content: center;">
                                 <div class="submit-btn">
-                                    <a href="Event-check-out.html"><button type="submit" class="btn btn-two arrow-btn">Create Event</button></a>
+                                    <a><button type="submit" class="btn btn-two arrow-btn" id="final-submit">Create Event</button></a>
                                 </div>
                             </div>
                         </div>
@@ -616,6 +628,7 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+    <script src="assets/MyScripts/Event_Create_Proccess.js"></script>
 </body>
 
 
