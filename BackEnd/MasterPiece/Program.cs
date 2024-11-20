@@ -28,7 +28,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<MasterPieceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterPiece_Connection_string")));
 
-
+ 
 
 // Service injection for EventService
 builder.Services.AddScoped<IEventService, EventService>();
@@ -37,6 +37,9 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<ITicketsService, TicketService>();
 builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOrganizerDashboardService, OrganizerDashboardService>();
+builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+
 
 
 
@@ -65,6 +68,7 @@ app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

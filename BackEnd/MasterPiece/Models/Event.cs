@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace MasterPiece.Models;
 
@@ -24,7 +23,7 @@ public partial class Event
 
     public int? AvailableSeats { get; set; }
 
-    public decimal TicketPrice { get; set; }
+    public decimal? TicketPrice { get; set; }
 
     public int? CategoryId { get; set; }
 
@@ -46,34 +45,23 @@ public partial class Event
 
     public string? Highlights { get; set; }
 
-    // Ignore collections and relationships from being serialized
-    [JsonIgnore]
     public virtual ICollection<Announcement> Announcements { get; set; } = new List<Announcement>();
 
-    [JsonIgnore]
     public virtual EventCategory? Category { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<EventSession> EventSessions { get; set; } = new List<EventSession>();
 
-    [JsonIgnore]
     public virtual User? Organizer { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 
-    [JsonIgnore]
     public virtual Plan? Plan { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 
-    [JsonIgnore]
     public virtual ICollection<Ticket> Tickets { get; set; } = new List<Ticket>();
 
-    [JsonIgnore]
     public virtual EventType? Type { get; set; }
 
-    [JsonIgnore]
     public virtual ICollection<Speaker> Speakers { get; set; } = new List<Speaker>();
 }

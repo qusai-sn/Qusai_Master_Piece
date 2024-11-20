@@ -239,26 +239,9 @@
                 <div class="dashboard__top-wrap">
                     <div class="dashboard__top-bg" data-background="assets/img/bg/instructor_dashboard_bg.jpg"></div>
                     <div class="dashboard__instructor-info">
-                        <div class="dashboard__instructor-info-left">
-                            <div class="thumb">
-                                <img src="assets/img/courses/details_instructors01.jpg" alt="img">
-                            </div>
-                            <div class="content">
-                                <h4 class="title">John Due</h4>
-                                <div class="review__wrap review__wrap-two">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span>(10 Reviews)</span>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="dashboard__instructor-info-right">
-                            <a href="Create-Event-1.html" class="btn btn-two arrow-btn">Create New Event <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
+                            <a href="#" class="btn btn-two arrow-btn">Create New Event <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
                         </div>
                     </div>
                 </div>
@@ -267,7 +250,7 @@
                         <div class="col-lg-3">
                             <div class="dashboard__sidebar-wrap">
                                 <div class="dashboard__sidebar-title mb-20">
-                                    <h6 class="title">Welcome, Jone Due</h6>
+                                    <h6 class="title">Welcome</h6>
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
@@ -277,26 +260,16 @@
                                                 Dashboard
                                             </a>
                                         </li>
-                                        <li>
+                                        <li >
                                             <a href="instructor-profile.html">
                                                 <i class="skillgro-avatar"></i>
                                                 My Profile
                                             </a>
                                         </li>                                 
                                        
-                                        <li>
-                                            <a href="instructor-review.html">
-                                                <i class="skillgro-book-2"></i>
-                                                Reviews
-                                            </a>
-                                        </li>
+                                  
                                    
-                                        <li>
-                                            <a href="instructor-history.html">
-                                                <i class="skillgro-satchel"></i>
-                                                sales report
-                                            </a>
-                                        </li>
+                                     
                                     </ul>
                                 </nav>
                                 <div class="dashboard__sidebar-title mt-40 mb-20">
@@ -304,16 +277,16 @@
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
-                                        <li>
+                                        <li >
                                             <a href="instructor-courses.html">
                                                 <i class="skillgro-video-tutorial"></i>
                                                 My Events
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="instructor-announcement.html">
-                                                <i class="skillgro-marketing"></i>
-                                                Announcements
+                                          <li>
+                                            <a href="instructor-history.html">
+                                                <i class="skillgro-satchel"></i>
+                                                sales report
                                             </a>
                                         </li>
                                        
@@ -353,7 +326,7 @@
                                                 <i class="skillgro-tutorial"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="15"></span>
+                                                <span id="my-events" class="count odometer" data-count="15">0</span>
                                                 <p>My Events</p>
                                             </div>
                                         </div>
@@ -364,7 +337,7 @@
                                                 <i class="skillgro-tutorial"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="3"></span>
+                                                <span id="active-events" class="count odometer" data-count="3">0</span>
                                                 <p>Active Events</p>
                                             </div>
                                         </div>
@@ -375,7 +348,7 @@
                                                 <i class="skillgro-diploma-1"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="12"></span>
+                                                <span id="ended-events" class="count odometer" data-count="12">0</span>
                                                 <p>Ended Events</p>
                                             </div>
                                         </div>
@@ -386,7 +359,7 @@
                                                 <i class="skillgro-group"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="220"></span>
+                                                <span id="total-attendance" class="count odometer" data-count="220">0</span>
                                                 <p>Total attendents</p>
                                             </div>
                                         </div>
@@ -397,7 +370,7 @@
                                                 <i class="skillgro-notepad"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="240"></span>
+                                                <span id="total-tickets" class="count odometer" data-count="240"></span>
                                                 <p>Total Tickets</p>
                                             </div>
                                         </div>
@@ -408,7 +381,7 @@
                                                 <i class="skillgro-dollar-currency-symbol"></i>
                                             </div>
                                             <div class="content">
-                                                <span class="count odometer" data-count="12000"></span>
+                                                <span id="total-earning" class="count odometer" data-count="12000"></span>
                                                 <p>Total Earnings</p>
                                             </div>
                                         </div>
@@ -419,7 +392,7 @@
                                 <div class="dashboard__content-title">
                                     <h4 class="title">My Latest Events </h4>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="events-cards-container">
                                     <div class="col">
                                         <div class="courses__item shine__animate-item">
                                             <div class="courses__item-thumb">
@@ -495,7 +468,7 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="dashboard__review-table">
-                                            <table class="table table-borderless">
+                                            <table class="table table-borderless" id="tickets-table">
                                                 <thead>
                                                     <tr>
                                                         <th>Event</th>
@@ -708,6 +681,7 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+    <script src="assets/MyScripts/OrganizerDashboard.js"></script> 
 </body>
 
 

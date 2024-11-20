@@ -29,6 +29,17 @@
     <link rel="stylesheet" href="assets/css/spacing.css">
     <link rel="stylesheet" href="assets/css/tg-cursor.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <style> 
+        .download-btn{
+            margin-top: 20px;
+        }
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    
+
 </head>
 
 <body>
@@ -238,26 +249,9 @@
                 <div class="dashboard__top-wrap">
                     <div class="dashboard__top-bg" data-background="assets/img/bg/instructor_dashboard_bg.jpg"></div>
                     <div class="dashboard__instructor-info">
-                        <div class="dashboard__instructor-info-left">
-                            <div class="thumb">
-                                <img src="assets/img/courses/details_instructors01.jpg" alt="img">
-                            </div>
-                            <div class="content">
-                                <h4 class="title">John Due</h4>
-                                <div class="review__wrap review__wrap-two">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span>(10 Reviews)</span>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="dashboard__instructor-info-right">
-                            <a href="#" class="btn btn-two arrow-btn">Create a New Course <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
+                            <a href="#" class="btn btn-two arrow-btn">Create New Event <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
                         </div>
                     </div>
                 </div>
@@ -266,7 +260,7 @@
                         <div class="col-lg-3">
                             <div class="dashboard__sidebar-wrap">
                                 <div class="dashboard__sidebar-title mb-20">
-                                    <h6 class="title">Welcome, Jone Due</h6>
+                                    <h6 class="title">Welcome</h6>
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
@@ -283,19 +277,9 @@
                                             </a>
                                         </li>                                 
                                        
-                                        <li >
-                                            <a href="instructor-review.html">
-                                                <i class="skillgro-book-2"></i>
-                                                Reviews
-                                            </a>
-                                        </li>
+                                  
                                    
-                                        <li class="active">
-                                            <a href="instructor-history.html">
-                                                <i class="skillgro-satchel"></i>
-                                                sales report
-                                            </a>
-                                        </li>
+                                     
                                     </ul>
                                 </nav>
                                 <div class="dashboard__sidebar-title mt-40 mb-20">
@@ -303,16 +287,16 @@
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
-                                        <li>
+                                        <li  >
                                             <a href="instructor-courses.html">
                                                 <i class="skillgro-video-tutorial"></i>
                                                 My Events
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="instructor-announcement.html">
-                                                <i class="skillgro-marketing"></i>
-                                                Announcements
+                                          <li class="active" >
+                                            <a href="instructor-history.html">
+                                                <i class="skillgro-satchel"></i>
+                                                sales report
                                             </a>
                                         </li>
                                        
@@ -348,14 +332,13 @@
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="dashboard__review-table">
-                                            <table class="table table-borderless">
+                                            <table class="table table-borderless" id="ticket-table">
                                                 <thead>
                                                     <tr>
                                                         <th>Order ID</th>
                                                         <th>Event Name</th>
                                                         <th>Date</th>
                                                         <th>Price</th>
-                                                        <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -394,6 +377,8 @@
                                     </div>
                                 </div>
                             </div>
+                            <button onclick="downloadSalesReport()" class="btn download-btn">Download Sales Report</button>
+
                         </div>
                         
                     </div>
@@ -545,6 +530,10 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+ 
+    <script src="assets/MyScripts/OrganizerTicketsSales.js"></script>
+
+    
 </body>
 
 

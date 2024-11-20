@@ -239,24 +239,7 @@
                 <div class="dashboard__top-wrap">
                     <div class="dashboard__top-bg" data-background="assets/img/bg/instructor_dashboard_bg.jpg"></div>
                     <div class="dashboard__instructor-info">
-                        <div class="dashboard__instructor-info-left">
-                            <div class="thumb">
-                                <img src="assets/img/courses/details_instructors01.jpg" alt="img">
-                            </div>
-                            <div class="content">
-                                <h4 class="title">John Due</h4>
-                                <div class="review__wrap review__wrap-two">
-                                    <div class="rating">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <span>(10 Reviews)</span>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="dashboard__instructor-info-right">
                             <a href="#" class="btn btn-two arrow-btn">Create New Event <img src="assets/img/icons/right_arrow.svg" alt="img" class="injectable"></a>
                         </div>
@@ -267,10 +250,13 @@
                         <div class="col-lg-3">
                             <div class="dashboard__sidebar-wrap">
                                 <div class="dashboard__sidebar-title mb-20">
-                                    <h6 class="title">Welcome, Jone Due</h6>
+                                    <h6 class="title">Welcome</h6>
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
+
+
+
                                         <li>
                                             <a href="instructor-dashboard.html">
                                                 <i class="fas fa-home"></i>
@@ -284,19 +270,9 @@
                                             </a>
                                         </li>                                 
                                        
-                                        <li>
-                                            <a href="instructor-review.html">
-                                                <i class="skillgro-book-2"></i>
-                                                Reviews
-                                            </a>
-                                        </li>
+                                  
                                    
-                                        <li>
-                                            <a href="instructor-history.html">
-                                                <i class="skillgro-satchel"></i>
-                                                sales report
-                                            </a>
-                                        </li>
+                                     
                                     </ul>
                                 </nav>
                                 <div class="dashboard__sidebar-title mt-40 mb-20">
@@ -304,16 +280,16 @@
                                 </div>
                                 <nav class="dashboard__sidebar-menu">
                                     <ul class="list-wrap">
-                                        <li>
+                                        <li  >
                                             <a href="instructor-courses.html">
                                                 <i class="skillgro-video-tutorial"></i>
                                                 My Events
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="instructor-announcement.html">
-                                                <i class="skillgro-marketing"></i>
-                                                Announcements
+                                          <li>
+                                            <a href="instructor-history.html">
+                                                <i class="skillgro-satchel"></i>
+                                                sales report
                                             </a>
                                         </li>
                                        
@@ -350,16 +326,13 @@
                                     <div class="col-lg-12">
                                         <div class="profile__content-wrap">
                                             <ul class="list-wrap">
-                                                <li><span>Registration Date</span> February 28, 2026 8:01 am</li>
-                                                <li><span>First Name</span> John</li>
-                                                <li><span>Last Name</span> Doe</li>
-                                                <li><span>Username</span> instructor</li>
-                                                <li><span>Email</span> info@skillgrodemo.com</li>
-                                                <li><span>Phone Number</span> +123 599 8989</li>
-                                                <li><span>Skill/Occupation</span> Graphic Design</li>
-                                                <li><span>Biography</span> I am eager to bring my passion for creating user-friendly and efficient web interfaces to your dynamic team. I am
-                                                applying for Front End Developer position in your company.</li>
-                                            </ul>
+                                                 <li id="f-name"><span>First Name</span> John</li>
+                                                <li id="l-name"><span>Last Name</span> Doe</li>
+                                                <li id="username" ><span>Username</span> instructor</li>
+                                                <li id="email" ><span>Email</span> info@skillgrodemo.com</li>
+                                                <li id="phone" ><span>Phone Number</span> +123 599 8989</li>
+                                                <li id="bio"><span>Biography</span> I am eager to bring my passion for creating user-friendly and efficient web interfaces to your dynamic team. I am
+                                             </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -514,6 +487,7 @@
     <script>
         SVGInject(document.querySelectorAll("img.injectable"));
     </script>
+    <script src="assets/MyScripts/FetchOrganizerProfile.js" ></script>
 </body>
 
 

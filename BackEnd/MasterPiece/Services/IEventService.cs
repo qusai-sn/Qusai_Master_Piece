@@ -105,7 +105,7 @@ namespace MasterPiece.Services
                     Description = e.Description,
                     ThumbnailUrl = e.ThumbnailUrl,          // Assuming this property exists
                     Category = e.Category.CategoryName,     // Adjust according to your model
-                    Price = e.TicketPrice                   // Adjust if you have a specific price logic
+                    Price = e.TicketPrice ?? 0m                   // Adjust if you have a specific price logic
                 })
                 .ToListAsync();
         }
