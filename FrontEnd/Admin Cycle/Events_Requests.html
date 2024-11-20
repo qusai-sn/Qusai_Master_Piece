@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Event Requests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Responsive bootstrap 4 admin template" name="description" />
+    <meta content="Coderthemes" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <!-- Third party css -->
+    <link href="assets/libs/datatables/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="assets/libs/datatables/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+
+    <!-- App css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" id="bootstrap-stylesheet" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-stylesheet" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Topbar Start -->
+        <div class="navbar-custom">
+            <ul class="list-unstyled topnav-menu float-right mb-0">
+                <li class="dropdown notification-list">
+                    <a class="nav-link dropdown-toggle nav-user mr-0" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                        <img src="assets/images/users/avatar-1.jpg" alt="user-image" class="rounded-circle">
+                        <span class="pro-user-name ml-1">
+                            Admin <i class="mdi mdi-chevron-down"></i>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right profile-dropdown">
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <i class="mdi mdi-logout-variant"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <!-- LOGO -->
+            <div class="logo-box">
+                <a href="index.html" class="logo text-center">
+                    <span class="logo-lg">
+                        <img src="assets/images/logo-dark.png" alt="" height="24">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="assets/images/logo-sm.png" alt="" height="24">
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Left Sidebar -->
+        <div class="left-side-menu">
+            <div class="user-box">
+                <div class="float-left">
+                    <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-md rounded-circle">
+                </div>
+                <div class="user-info">
+                    <a href="#">Admin</a>
+                    <p class="text-muted m-0">Administrator</p>
+                </div>
+            </div>
+
+            <div id="sidebar-menu">
+                <ul class="metismenu" id="side-menu">
+                    <li class="menu-title">Navigation</li>
+                    <li>
+                        <a href="events.html">
+                            <i class="fe-calendar"></i>
+                            <span> Events </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="event-requests.html" class="active">
+                            <i class="fe-clipboard"></i>
+                            <span> Event Requests </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="tickets.html">
+                            <i class="fe-ticket"></i>
+                            <span> Tickets </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="categories.html">
+                            <i class="fe-grid"></i>
+                            <span> Categories & Types </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="plans.html">
+                            <i class="fe-file-text"></i>
+                            <span> Plans </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-page">
+            <div class="content">
+                <div class="container-fluid">
+                    <!-- Page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box">
+                                <h4 class="page-title">Event Requests</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Main content -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="datatable" class="table table-bordered dt-responsive nowrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Event Title</th>
+                                                <th>Organizer</th>
+                                                <th>Submission Date</th>
+                                                <th>Category</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Tech Conference 2024</td>
+                                                <td>John Smith</td>
+                                                <td>2024-03-15</td>
+                                                <td>Technology</td>
+                                                <td><span class="badge badge-warning">Pending</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#reviewModal">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-success">
+                                                        <i class="mdi mdi-check"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger">
+                                                        <i class="mdi mdi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Summer Music Festival</td>
+                                                <td>Jane Doe</td>
+                                                <td>2024-03-14</td>
+                                                <td>Entertainment</td>
+                                                <td><span class="badge badge-warning">Pending</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#reviewModal">
+                                                        <i class="mdi mdi-eye"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-success">
+                                                        <i class="mdi mdi-check"></i>
+                                                    </button>
+                                                    <button class="btn btn-sm btn-danger">
+                                                        <i class="mdi mdi-close"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            2024 © Event Management System
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Review Modal -->
+        <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Review Event Request</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5>Event Details</h5>
+                                <div class="form-group">
+                                    <label>Title:</label>
+                                    <p>Tech Conference 2024</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Description:</label>
+                                    <p>Annual technology conference featuring industry leaders...</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Date:</label>
+                                    <p>July 15, 2024</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Location:</label>
+                                    <p>Convention Center</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Ticket Price:</label>
+                                    <p>$299</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Organizer Details</h5>
+                                <div class="form-group">
+                                    <label>Name:</label>
+                                    <p>John Smith</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email:</label>
+                                    <p>john@example.com</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone:</label>
+                                    <p>+1 234 567 8900</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Previous Events:</label>
+                                    <p>3 Successful Events</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-4">
+                            <label>Admin Notes</label>
+                            <textarea class="form-control" rows="3" placeholder="Add notes or feedback for the organizer..."></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger">Reject</button>
+                        <button type="button" class="btn btn-success">Approve</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
+    <script src="assets/libs/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
+    <script src="assets/libs/datatables/responsive.bootstrap4.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
+
+    <script src="Eventify_admin/JS/event_request.js"></script>
+</body>
+</html>
