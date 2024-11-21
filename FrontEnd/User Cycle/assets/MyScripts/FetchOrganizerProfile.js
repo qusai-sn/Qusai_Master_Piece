@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Replace '4' with the actual userId you want to fetch
-    const userId = 1;
+    const userId = localStorage.getItem('userId');
     const apiUrl = `https://localhost:7293/api/OrganizerProfile/${userId}`;
 
     fetch(apiUrl)

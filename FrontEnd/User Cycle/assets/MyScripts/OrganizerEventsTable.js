@@ -1,6 +1,6 @@
 async function loadOrganizerEventsTable() {
     try {
-        const organizerId = 2; // Replace with actual ID
+        const organizerId = localStorage.getItem('userId'); // Replace with actual ID
         const response = await fetch(`https://localhost:7293/table/${organizerId}`);
         const data = await response.json();
  

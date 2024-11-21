@@ -91,6 +91,6 @@ document.head.appendChild(style);
 
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const userId = 1; // Replace with actual user ID
+    const userId = localStorage.getItem('userId'); // Replace with actual user ID
     fetchAndPopulateEvents(userId);
 });

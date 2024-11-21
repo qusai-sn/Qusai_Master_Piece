@@ -44,4 +44,15 @@
         public int SoldTickets { get; set; }
         public decimal TotalRevenue { get; set; }
     }
+
+
+    public class TicketCreateDTO
+    {
+        public int EventId { get; set; }
+        public int UserId { get; set; }
+        public string Qrcode { get; set; }
+        public decimal Price { get; set; }
+        public DateTime PurchaseDate { get; set; }
+    }
+
 }

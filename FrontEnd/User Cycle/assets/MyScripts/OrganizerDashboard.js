@@ -1,6 +1,6 @@
 async function loadDashboardData() {
     try {
-        const userId = 4;
+        const userId = localStorage.getItem('userId');
         const response = await fetch(`https://localhost:7293/api/OrganizerDashboard/${userId}`);
         const data = await response.json();
         console.log('Received data:', data);

@@ -30,7 +30,7 @@ async function loadSalesTable() {
  
  async function downloadSalesReport() {
     try {
-        const organizerId = 2;
+        const organizerId = localStorage.getItem('userId');
         const response = await fetch(`https://localhost:7293/api/OrganizerDashboard/all/${organizerId}`);
         const data = await response.json();
         

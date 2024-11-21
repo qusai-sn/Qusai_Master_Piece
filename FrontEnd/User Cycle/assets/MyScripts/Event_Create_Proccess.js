@@ -141,7 +141,7 @@ async function submitOverview(event) {
     formData.append('EventTypeId', document.getElementById('eventType').value);
     formData.append('TotalSeats', document.getElementById('total-seats').value);
     formData.append('EventCategoryId', document.getElementById('eventCategory').value);
-    formData.append('OrganizerId', '2');
+    formData.append('OrganizerId', localStorage.getItem('userId'));
     formData.append('ThumbnailFile', document.getElementById('Thumbnail').files[0]);
     formData.append('BannerFile', document.getElementById('banner').files[0]);
 

@@ -26,7 +26,7 @@ async function loadOrganizerProfile(organizerId) {
 async function updateOrganizerProfile(event) {
     event.preventDefault();
 
-    const organizerId = 1; // Replace with actual organizer ID
+    const organizerId =localStorage.getItem('userId'); // Replace with actual organizer ID
     const updateData = {
         userId: organizerId, // Using userId as it matches the existing API
         firstName: document.getElementById('firstname').value,
@@ -84,7 +84,7 @@ function showAlert(message, type) {
 // Initialize when document is loaded
 document.addEventListener('DOMContentLoaded', function() {
     // Load initial profile data
-    const organizerId = 1; // Replace with actual organizer ID
+    const organizerId = localStorage.getItem('userId'); // Replace with actual organizer ID
     loadOrganizerProfile(organizerId);
 
     // Add form submit handler

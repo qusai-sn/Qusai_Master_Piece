@@ -22,7 +22,7 @@ async function loadPaymentMethod(userId) {
 
 async function updatePaymentMethod() {
 
-    const userId = 2; // Replace with actual user ID
+    const userId = localStorage.getItem('userId'); // Replace with actual user ID
     const paymentData = {
         cardholderName: document.getElementById('cardholderName').value,
         cardNumber: document.getElementById('cardNumber').value,

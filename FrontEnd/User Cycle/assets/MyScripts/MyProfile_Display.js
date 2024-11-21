@@ -27,4 +27,4 @@ async function fetchUserProfile(userId) {
 }
 
 // Call the function with the userId
-fetchUserProfile(1); // Replace 1 with the actual userId if needed
+fetchUserProfile(localStorage.getItem('userId')); // Replace 1 with the actual userId if needed
