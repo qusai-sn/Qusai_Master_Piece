@@ -1,79 +1,12 @@
-// Tags for use with id's : 
 
-//  <h2 class="title" id="Ticket_price">$19.00</h2>
-
-//  <span id="Event_Date">26/10/2024</span>
-
-//  <span id="Event_start_time">10.00am</span>
-
-// <span id="Event_end_time">3.00pm</span>
-
-// <span id="Event_Location">Amman</span>
-
-// <span id="available_and_total_seats">43/80</span>
-
-// <iframe id="location_url" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d216663.6087361063!2d35.689091839469256!3d31.950887765402538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151ca01f4813fa53%3A0xb305654d2c2663b2!2sMAP%20Architects%20%26%20Engineers!5e0!3m2!1sen!2sjo!4v1726659967578!5m2!1sen!2sjo" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-// <a id="event_category" href="course.html">Development</a>
-
-// <a id="event_type" href="course.html">Conference</a>
-
-// <h2 class="title" id="event_title">Woman Business Conference 2019</h2>
-
-// <a id="organizer_name" href="#">Andrew Tate</a>
-
-// <p id="event_description">The Annual Business & Entrepreneurship Summit brings together innovators, entrepreneurs, and industry leaders to discuss the latest trends, challenges, and opportunities in the business world. This two-day event will offer a blend of keynote speeches, panel discussions, and interactive workshops designed to inspire and equip attendees with actionable insights and strategies for success.</p>
-
-
-// this is the api respone from swagger when you request event by id : 
-
-// {
-//     "eventId": 1,
-//     "title": "Annual Business Conference",
-//     "description": "A comprehensive conference covering all aspects of business management and innovation.",
-//     "date": "2024-10-05",
-//     "startTime": "09:00:00",
-//     "endTime": "17:00:00",
-//     "location": "Convention Center, Downtown",
-//     "totalSeats": 300,
-//     "availableSeats": 300,
-//     "ticketPrice": 200,
-//     "categoryId": 1,
-//     "typeId": 1,
-//     "organizerId": 1,
-//     "bannerUrl": "http://example.com/banner.jpg",
-//     "category": {
-//       "categoryId": 1,
-//       "categoryName": "Business"
-//     },
-//     "organizer": {
-//       "userId": 1,
-//       "firstName": "Qusai",
-//       "lastName": "Omar",
-//       "email": "qusayomar20@gmail.com",
-//       "phoneNumber": "1234567890",
-//       "username": "qusaiOmar",
-//       "biography": "Passionate about event planning and management."
-//     },
-//     "type": {
-//       "typeId": 1,
-//       "typeName": "Conference"
-//     }
-//   }
-
-// the api url is in the format : https://localhost:7293/api/EventDetails/{id}
-// the id is the id of the event you want to get details of
-
-// make a fetch for an event with id=1 , then map the api response json data to the html tags above 
-// change the content of the tag to the response data , by using js . 
 
 
 // Function to get a query parameter by name
 function getQueryParam(param) {
-    // Create a URLSearchParams object from the current URL's query string
+
     const urlParams = new URLSearchParams(window.location.search);
-    // Return the value of the specified parameter
-    return urlParams.get(param);
+
+     return urlParams.get(param);
 }
 
 // Example usage: Get the 'id' parameter from the URL
@@ -82,7 +15,6 @@ const eventId = getQueryParam('id');
  
 const apiUrl = `https://localhost:7293/api/EventDetails/${eventId}`;
 
-// Fetch the event details
 fetch(apiUrl)
   .then(response => {
       if (!response.ok) {
@@ -91,30 +23,59 @@ fetch(apiUrl)
       return response.json();
   })
   .then(data => {
-      // Map the API response to the HTML elements
-      document.getElementById('Ticket_price').textContent = `$${data.ticketPrice}`;
+      // Basic Event Information
+      document.getElementById('event_title').textContent = data.title;
+      document.getElementById('event_description').textContent = data.description;
+
+      // Date and Time
       document.getElementById('Event_Date').textContent = new Date(data.eventDate).toLocaleDateString();
       document.getElementById('Event_start_time').textContent = new Date(`1970-01-01T${data.startTime}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
       document.getElementById('Event_end_time').textContent = new Date(`1970-01-01T${data.endTime}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+      // Location Information
       document.getElementById('Event_Location').textContent = data.location;
-      document.getElementById('available_and_total_seats').textContent = `${data.availableSeats}/${data.totalSeats}`;
       document.getElementById('location_url').src = data.locationUrl;
-      // No category and type objects in the response, so simply remove those lines
-      // If you have a mapping for categoryId and typeId, you can use that
-      document.getElementById('event_title').textContent = data.title;
-      document.getElementById('event_description').textContent = data.description;
+
+      // Tickets and Pricing
+      document.getElementById('Ticket_price').textContent = `$${data.ticketPrice.toFixed(2)}`;
+      document.getElementById('available_and_total_seats').textContent = `${data.totalSeats}`;
+
+      // Images
       document.getElementById('event_banner').src = data.bannerUrl;
-      document.getElementById('event_thumbnail').src = data.thumbnailUrl;
+ 
+      // Additional Information
       document.getElementById('what_to_expect').textContent = data.whatToExpect;
-      document.getElementById('highlights').textContent = data.highlights;
+ 
+      // Category and Type
+      document.getElementById('event_category').textContent = data.categoryName;
+      document.getElementById('event_type').textContent = data.typeName;
+
+      // Organizer Information
+      if (data.organizer) {
+          document.getElementById('organizer_name').textContent = data.organizer.name || 'N/A';
+          document.getElementById('organizer_email').textContent = data.organizer.email || 'N/A';
+          document.getElementById('organizer_phone').textContent = data.organizer.phoneNumber || 'N/A';
+      }
+
+      // Ticket Summary
+      if (data.ticketsSummary) {
+          document.getElementById('total_tickets').textContent = data.ticketsSummary.totalTickets;
+          document.getElementById('sold_tickets').textContent = data.ticketsSummary.soldTickets;
+          document.getElementById('total_revenue').textContent = `$${data.ticketsSummary.totalRevenue.toFixed(2)}`;
+      }
   })
   .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
+      // Show error message to user
+      document.getElementById('error-message').textContent = 'Failed to load event details';
   });
- 
 // get the catregory and type dynamiclly later 
 
   
+
+
+
+
   async function fetchEventSchedule(eventId) {
     try {
         const response = await fetch(`https://localhost:7293/api/EventDetails/${eventId}/schedule`);
@@ -127,6 +88,8 @@ fetch(apiUrl)
         console.error('Error fetching schedule:', error);
     }
 }
+
+
 
 function populateSchedule(schedule) {
     const accordionExample = document.getElementById("accordionExample");
@@ -175,18 +138,9 @@ function populateSchedule(schedule) {
 fetchEventSchedule(eventId); // Example event ID
 
 
-async function fetchEventDetails(eventId) {
-    try {
-        const response = await fetch(`https://localhost:7293/api/EventDetails/${eventId}`);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const eventDetails = await response.json();
-        populateEventDetails(eventDetails);
-    } catch (error) {
-        console.error('Error fetching event details:', error);
-    }
-}
+
+ 
+
 
 function populateEventDetails(eventDetails) {
     const whatToExpect = document.getElementById("What-to-Expect");
@@ -210,101 +164,104 @@ function populateEventDetails(eventDetails) {
         highlightsList.appendChild(listItem);
     });
 }
-
-// Call this function with the specific event ID you want to fetch details for
-fetchEventDetails(1); // Example event ID
  
- 
-// Function to register the event ticket details in local storage
-function registerEventTicket() {
-    const ticketTitle = document.getElementById('event_title').textContent; // Get the event title
-    const ticketPrice = parseFloat(document.getElementById('Ticket_price').textContent.replace('$', '')); // Get the ticket price as a number
-    const quantity = 1; // Assuming quantity is always 1 for this example
-    const subtotal = ticketPrice * quantity; // Calculate subtotal
-
-    // Create a ticket object
-    const ticket = {
-        title: ticketTitle,
-        price: ticketPrice,
-        quantity: quantity,
-        subtotal: subtotal
+ // In event-details.js
+document.getElementById('joinEventButton').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const eventData = {
+        title: encodeURIComponent(document.getElementById('event_title').textContent),
+        price: encodeURIComponent(document.getElementById('Ticket_price').textContent.replace('$', '')),
+        date: encodeURIComponent(document.getElementById('Event_Date').textContent)
     };
 
-    // Retrieve existing tickets from local storage
-    const existingTickets = JSON.parse(localStorage.getItem('eventTickets')) || [];
-
-    // Add the new ticket to the existing tickets
-    existingTickets.push(ticket);
-
-    // Store the updated tickets array back to local storage
-    localStorage.setItem('eventTickets', JSON.stringify(existingTickets));
-
-    // Log to the console for confirmation (optional)
-    console.log('Event ticket registered:', ticket);
-}
-
-// Add event listener to the button
-document.getElementById('joinEventButton').addEventListener('click', (event) => {
-    // Prevent default anchor behavior if needed
-    event.preventDefault();
-
-    // Register the ticket details
-    registerEventTicket();
-
-    // Redirect to the cart page
-    window.location.href = 'cart.html';
+    // Build URL with all parameters
+    const checkoutUrl = `check-out.html?eventId=${eventId}&title=${eventData.title}&price=${eventData.price}&date=${eventData.date}`;
+    
+    window.location.href = checkoutUrl;
 });
-
-// Define the API URL
+ 
+// Define the API URL for speakers
 const apiUrl2 = `https://localhost:7293/api/EventDetails/${eventId}/speakers`;
 
-// Fetch the event details
+// Fetch the speakers data
 fetch(apiUrl2)
-  .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok');
-      }
-      return response.json();
-  })
-  .then(data => {
-      // Clear existing content (if any)
-      const instructorsWrap = document.querySelector('.courses__instructors-wrap');
-      instructorsWrap.innerHTML = ''; // Clear any existing instructors
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const tableBody = document.getElementById('speakers-table-body');
+        tableBody.innerHTML = ''; // Clear existing content
 
-      // Check if speaker data is available
-      if (data.length > 0) {
-          data.forEach(speaker => {
-              // Create a new div for each speaker
-              const container = document.getElementById('speakers_container');
-              const instructorDiv = document.createElement('div');
-              instructorDiv.classList.add('courses__instructors-thumb');
-              
-              // Create the inner HTML structure for the speaker
-              instructorDiv.innerHTML = `
+        if (data.length > 0) {
+            data.forEach(speaker => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${speaker.name}</td>
+                    <td>${speaker.role}</td>
+                    <td>${speaker.bio}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } else {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td colspan="4" class="text-center">No speakers available for this event.</td>
+            `;
+            tableBody.appendChild(row);
+        }
+    })
+    .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+        const tableBody = document.getElementById('speakers-table-body');
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center text-danger">
+                    Failed to load speakers data.
+                </td>
+            </tr>
+        `;
+    });
 
-                  <img src="${speaker.profileImageUrl}" alt="${speaker.name}">
-                  <div class="courses__instructors-content">
-                      <h2 class="title" id="name">${speaker.name}</h2>
-                      <span class="designation" id="role">${speaker.role}</span>
-                      <p id="bio">${speaker.bio}</p>
-                      <div class="instructor__social">
-                          <ul class="list-wrap justify-content-start">
-                              <li><a id="facebookUrl" href="${speaker.facebookUrl}" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
-                              <li><a id="twitterUrl" href="${speaker.twitterUrl}" target="_blank"><i class="fab fa-twitter"></i></a></li>
-                              <li><a id="whatsAppUrl" href="${speaker.whatsAppUrl}" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                              <li><a id="instagramUrl" href="${speaker.instagramUrl}" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                          </ul>
-                      </div>
-                  </div>
-              `;
 
-              // Append the new speaker div to the instructors wrap
-              instructorsWrap.appendChild(instructorDiv);
-          });
-      } else {
-          console.error('No speaker data available.');
-      }
-  })
-  .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-  });
+
+    // Function to fetch and populate highlights
+async function fetchAndPopulateHighlights(eventId) {
+    try {
+        const response = await fetch(`https://localhost:7293/api/EventDetails/${eventId}/highlights`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch highlights');
+        }
+        const highlightsText = await response.text(); // Get response as text since it's plain text
+        populateHighlights(highlightsText);
+    } catch (error) {
+        console.error('Error fetching highlights:', error);
+    }
+}
+
+// Function to populate highlights into the HTML
+function populateHighlights(highlightsText) {
+    const highlightsList = document.getElementById('Event-HighLights');
+    highlightsList.innerHTML = ''; // Clear existing highlights
+
+    // Split the highlights text by semicolon and trim each item
+    const highlights = highlightsText.split(';').map(item => item.trim());
+
+    // Create and append list items for each highlight
+    highlights.forEach(highlight => {
+        if (highlight) { // Only create element if highlight is not empty
+            const li = document.createElement('li');
+            li.className = 'about__info-list-item';
+            li.innerHTML = `
+                <i class="flaticon-angle-right"></i>
+                <p class="content">${highlight}</p>
+            `;
+            highlightsList.appendChild(li);
+        }
+    });
+}
+
+fetchAndPopulateHighlights(eventId);

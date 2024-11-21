@@ -16,6 +16,8 @@
         public int OrganizerId { get; set; }
         public string? ThumbnailUrl { get; set; }
         public string? BannerUrl { get; set; }
+        public string? WhatToExpect { get; set; }
+        public string? Highlights { get; set; }
 
         public IFormFile ThumbnailFile { get; set; }
         public IFormFile BannerFile { get; set; }
@@ -27,11 +29,7 @@
         public string Name { get; set; }
         public string Role { get; set; }
         public string Bio { get; set; }
-        public string ProfileImageUrl { get; set; }
-        public string FacebookUrl { get; set; }
-        public string TwitterUrl { get; set; }
-        public string InstagramUrl { get; set; }
-        public string WhatsAppUrl { get; set; }
+ 
     }
 
     public class EventSessionDTO

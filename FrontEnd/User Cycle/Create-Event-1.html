@@ -306,6 +306,14 @@
                                                                     <label for="overview">Event Overview</label>
                                                                     <textarea id="overview" name="overview" placeholder="write a paragraph of at least 4 lines "></textarea>
                                                                 </div>
+                                                                <div class="form-grp">
+                                                                    <label for="What-to-Expect">What to Expect from this Event</label>
+                                                                    <textarea id="What-to-Expect" name="What-to-Expect" placeholder="What to Expect from this Event"></textarea>
+                                                                </div>
+                                                                <div class="form-grp">
+                                                                    <label for="Highlights">Event Highlights</label>
+                                                                    <textarea id="Highlights" name="Highlights" placeholder="Write Highlights seperated by ; "></textarea>
+                                                                </div>
 
                                                                 <div class="timing">
                                                                     <div class="form-grp">
@@ -400,8 +408,10 @@
                                                             <label for="speakerBio">Speaker Biography</label>
                                                             <textarea id="speakerBio" name="speakerBio" placeholder="Enter speaker's biography"></textarea>
                                                         </div>
+                                                     
+                                                        
                                                         <div class="submit-btn mt-25">
-                                                            <button type="submit" class="btn">Add  Speaker</button>
+                                                            <button type="submit" class="btn" id="add-speaker">Add  Speaker</button>
 
                                                         </div>
                                                     </form>
@@ -440,23 +450,13 @@
                                                 <div class="instructor__profile-form-wrap">
                                                     <form action="#" class="instructor__profile-form" id="ticketsForm">
                                                          
-                                                        <div class="form-grp">
-                                                            <label for="TicketType">Ticket Type</label>
-                                                            <select id="TicketType" name="TicketType">
-                                                                <option value="paid">Paid</option>
-                                                                <option value="free">Free</option>
-                                                                <option value="donation">Donation</option>
-                                                            </select>
-                                                        </div>
+                                                   
                                                         <div class="timing">
                                                             <div class="form-grp">
                                                                 <label for="price">Price</label>
                                                                 <input id="price" type="number" value="Amman">
                                                             </div>
-                                                            <div class="form-grp">
-                                                                <label for="donationLimit">Donation Limit</label>
-                                                                <input id="donationLimit" type="number" value="100">
-                                                            </div>
+                                                        
                                                         </div>
                                                         <div class="submit-btn mt-25">
                                                             <button type="submit" class="btn">Add Ticket</button>
