@@ -2,30 +2,33 @@
 using MasterPiece.Services;
 using MasterPiece.DTO;
 
-namespace MasterPiece.Controllers.Profile
+namespace MasterPiece.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TicketsController : ControllerBase
+    public class Tickets2Controller : ControllerBase
     {
         private readonly ITicketsService _ticketService;
+        private readonly ILogger<TicketsController> _logger;
 
-        public TicketsController(ITicketsService ticketService)
+        public Tickets2Controller(ITicketsService ticketService, ILogger<TicketsController> logger)
         {
             _ticketService = ticketService;
+            _logger = logger;
         }
 
-        [HttpGet("user/{userId}")]
-        public async Task<ActionResult<IEnumerable<SimpleTicketDto>>> GetUserTickets(int userId)
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<TicketDto1>>> GetAllTickets()
         {
             try
             {
-                var tickets = await _ticketService.GetUserTicketsAsync(userId);
-                return Ok(tickets);
+                var tickets = await _ticketService.GetUserTicketsAsync();
+                return Ok(tickets ?? Enumerable.Empty<TicketDto1>());
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Error retrieving tickets");
+                _logger.LogError($"Error in GetAllTickets: {ex.Message}", ex);
+                return StatusCode(500, new { message = "Error retrieving tickets", error = ex.Message });
             }
         }
     }

@@ -1,3 +1,6 @@
+
+let userId = localStorage.getItem('userId');
+
 async function loadDashboardData(userId) {
     try {
         const response = await fetch(`https://localhost:7293/api/Dashboard/stats/${userId}`);
@@ -90,6 +93,6 @@ async function loadDashboardData(userId) {
 
 // Load dashboard data when page loads
 document.addEventListener('DOMContentLoaded', () => {
-    const userId = 1; // Replace with actual user ID
+    const userId = localStorage.getItem('userId'); // Replace with actual user ID
     loadDashboardData(userId);
 });

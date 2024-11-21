@@ -1,14 +1,14 @@
 // Function to fetch and display categories and types
 async function initializeTables() {
     try {
-        const categoryResponse = await fetch('https://localhost:7293/api/EventCategories', {
+        const categoryResponse = await fetch('https://localhost:44324/api/CategoryType/categories', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
             }
         });
 
-        const typeResponse = await fetch('https://localhost:7293/api/EventTypes', {
+        const typeResponse = await fetch('https://localhost:44324/api/CategoryType/types', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
@@ -19,8 +19,13 @@ async function initializeTables() {
             throw new Error('Failed to fetch data');
         }
 
-        const categories = await categoryResponse.json();
-        const types = await typeResponse.json();
+        // Parse JSON and handle $values property
+        const categories = (await categoryResponse.json()).$values || [];
+        const types = (await typeResponse.json()).$values || [];
+
+        if (!Array.isArray(categories) || !Array.isArray(types)) {
+            throw new Error('Invalid response format');
+        }
 
         populateCategoryTable(categories);
         populateTypeTable(types);
@@ -37,7 +42,7 @@ async function initializeTables() {
         });
 
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Error:', error.message);
         showAlert('Error loading data', 'error');
     }
 }
@@ -91,7 +96,7 @@ function populateTypeTable(types) {
 // Category CRUD Functions
 async function editCategory(categoryId) {
     try {
-        const response = await fetch(`https://localhost:7293/api/EventCategories/${categoryId}`);
+        const response = await fetch(`https://localhost:44324/api/CategoryType/categories/${categoryId}`);
         if (!response.ok) throw new Error('Failed to fetch category details');
         
         const category = await response.json();
@@ -114,8 +119,8 @@ async function saveCategory() {
 
     try {
         const url = categoryData.categoryId ? 
-            `https://localhost:7293/api/EventCategories/${categoryData.categoryId}` : 
-            'https://localhost:7293/api/EventCategories';
+            `https://localhost:44324/api/CategoryType/categories/${categoryData.categoryId}` :
+            'https://localhost:44324/api/CategoryType/categories';
 
         const response = await fetch(url, {
             method: categoryData.categoryId ? 'PUT' : 'POST',
@@ -140,7 +145,7 @@ async function deleteCategory(categoryId) {
     if (!confirm('Are you sure you want to delete this category?')) return;
 
     try {
-        const response = await fetch(`https://localhost:7293/api/EventCategories/${categoryId}`, {
+        const response = await fetch(`https://localhost:44324/api/CategoryType/categories/${categoryId}`, {
             method: 'DELETE'
         });
 
@@ -157,7 +162,7 @@ async function deleteCategory(categoryId) {
 // Type CRUD Functions
 async function editType(typeId) {
     try {
-        const response = await fetch(`https://localhost:7293/api/EventTypes/${typeId}`);
+        const response = await fetch(`https://localhost:44324/api/CategoryType/types/${typeId}`);
         if (!response.ok) throw new Error('Failed to fetch type details');
         
         const type = await response.json();
@@ -180,8 +185,10 @@ async function saveType() {
 
     try {
         const url = typeData.typeId ? 
-            `https://localhost:7293/api/EventTypes/${typeData.typeId}` : 
-            'https://localhost:7293/api/EventTypes';
+            `https://localhost:44324/api/CategoryType/types/${typeData.typeId}` :
+            'https://localhost:44324/api/CategoryType/types';
+        
+
 
         const response = await fetch(url, {
             method: typeData.typeId ? 'PUT' : 'POST',
@@ -206,7 +213,7 @@ async function deleteType(typeId) {
     if (!confirm('Are you sure you want to delete this type?')) return;
 
     try {
-        const response = await fetch(`https://localhost:7293/api/EventTypes/${typeId}`, {
+        const response = await fetch(`https://localhost:44324/api/CategoryType/types/${typeId}`, {
             method: 'DELETE'
         });
 

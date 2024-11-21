@@ -7,11 +7,22 @@ using System.Threading.Tasks;
 
 namespace MasterPiece.Services
 {
+
+
+
+
     // Define the interface
     public interface ITicketsService
     {
         Task<IEnumerable<SimpleTicketDto>> GetUserTicketsAsync(int userId);
+
+        Task<Ticket> CreateTicketAsync(TicketCreateDTO ticketDto);
+
+
     }
+ 
+
+
 
     // Implement the interface in the TicketService class
     public class TicketService : ITicketsService
@@ -26,7 +37,6 @@ namespace MasterPiece.Services
         public async Task<IEnumerable<SimpleTicketDto>> GetUserTicketsAsync(int userId)
         {
             return await _context.Tickets
-                .Where(t => t.UserId == userId)
                 .Include(t => t.Event)
                 .Select(t => new SimpleTicketDto
                 {
@@ -38,5 +48,45 @@ namespace MasterPiece.Services
                 .OrderByDescending(t => t.PurchaseDate)
                 .ToListAsync();
         }
+
+
+
+        public async Task<Ticket> CreateTicketAsync(TicketCreateDTO ticketDto)
+        {
+            var ticket = new Ticket
+            {
+                EventId = ticketDto.EventId,
+                UserId = ticketDto.UserId,
+                Qrcode = ticketDto.Qrcode,
+                Price = ticketDto.Price,
+                PurchaseDate = ticketDto.PurchaseDate
+            };
+
+            _context.Tickets.Add(ticket);
+            await _context.SaveChangesAsync();
+
+            return ticket;
+        }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
+
+
+
+
+
+
+
+
+
+

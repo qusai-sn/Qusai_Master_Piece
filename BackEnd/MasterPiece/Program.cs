@@ -7,8 +7,12 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
-
+builder.Services.AddControllers()
+.AddJsonOptions(options =>
+ {
+     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+     options.JsonSerializerOptions.WriteIndented = true; // Optional: for better readability
+ });
 
 // Swagger/OpenAPI setup
 builder.Services.AddEndpointsApiExplorer();
@@ -28,7 +32,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddDbContext<MasterPieceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MasterPiece_Connection_string")));
 
-
+ 
 
 // Service injection for EventService
 builder.Services.AddScoped<IEventService, EventService>();
@@ -37,7 +41,15 @@ builder.Services.AddScoped<IPaymentService, PaymentService>();
 builder.Services.AddScoped<ITicketsService, TicketService>();
 builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IOrganizerDashboardService, OrganizerDashboardService>();
+builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
+builder.Services.AddScoped<ICreateEventService, CreateEventService>();
+builder.Services.AddScoped<ICategoryTypeService, CategoryTypeService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
+
+
+ 
 
 
 var app = builder.Build();
@@ -56,8 +68,9 @@ app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
         Path.Combine(builder.Environment.ContentRootPath, "Media")),
-    RequestPath = "/Media"   
+    RequestPath = "/Media"
 });
+
 
 app.UseRouting();
 
@@ -65,6 +78,7 @@ app.UseCors("AllowAllOrigins");
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -7,7 +7,7 @@ namespace MasterPiece.Services
     public interface IEventService
     {
         Task<IEnumerable<Event>> GetAllEventsAsync();
-        Task<Event> GetEventByIdAsync(int eventId);
+        Task<EventDetailsDTO> GetEventByIdAsync(int eventId);
         Task<string> GetEventHighLights(int eventId);  
         Task<IEnumerable<EventSession>> GetEventSchedule(int eventId);
         Task<IEnumerable<Speaker>> GetEventSpeakers(int eventId);
@@ -36,7 +36,7 @@ namespace MasterPiece.Services
                 .ToListAsync();
         }
 
-        public async Task<Event> GetEventByIdAsync(int eventId)
+        public async Task<EventDetailsDTO> GetEventByIdAsync(int eventId)
         {
             if (eventId <= 0)
             {
@@ -44,11 +44,44 @@ namespace MasterPiece.Services
             }
 
             return await _context.Events
-                .Include(e => e.Category)    // Include Category
-                .Include(e => e.Type)        // Include Type
-                .Include(e => e.Organizer)   // Include Organizer
-                .Include(e => e.Tickets)     // Include Tickets
-                .FirstOrDefaultAsync(e => e.EventId == eventId);
+                .Include(e => e.Category)
+                .Include(e => e.Type)
+                .Include(e => e.Organizer)
+                .Include(e => e.Tickets)
+                .Where(e => e.EventId == eventId)
+                .Select(e => new EventDetailsDTO
+                {
+                    EventId = e.EventId,
+                    Title = e.Title,
+                    Description = e.Description,
+                    EventDate = e.EventDate,
+                    StartTime = e.StartTime,
+                    EndTime = e.EndTime,
+                    Location = e.Location,
+                    TotalSeats = e.TotalSeats,
+                    AvailableSeats = e.AvailableSeats,
+                    TicketPrice = e.TicketPrice,
+                    BannerUrl = e.BannerUrl,
+                    LocationUrl = e.LocationUrl,
+                    ThumbnailUrl = e.ThumbnailUrl,
+                    WhatToExpect = e.WhatToExpect,
+                    Highlights = e.Highlights,
+                    CategoryName = e.Category.CategoryName,
+                    TypeName = e.Type.TypeName,
+                    Organizer = new OrganizerInfoDTO
+                    {
+                        OrganizerId = e.Organizer.UserId,
+                        Name = $"{e.Organizer.FirstName} {e.Organizer.LastName}",
+            
+                    },
+                    TicketsSummary = new TicketsSummaryDTO
+                    {
+                        TotalTickets = e.TotalSeats ?? 0,
+             
+              
+                    }
+                })
+                .FirstOrDefaultAsync();
         }
 
         public async Task<string> GetEventHighLights(int eventId)
@@ -105,7 +138,7 @@ namespace MasterPiece.Services
                     Description = e.Description,
                     ThumbnailUrl = e.ThumbnailUrl,          // Assuming this property exists
                     Category = e.Category.CategoryName,     // Adjust according to your model
-                    Price = e.TicketPrice                   // Adjust if you have a specific price logic
+                    Price = e.TicketPrice ?? 0m                   // Adjust if you have a specific price logic
                 })
                 .ToListAsync();
         }

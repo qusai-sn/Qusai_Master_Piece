@@ -362,3 +362,10 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
  
+/BackEnd/MasterPiece/Models/MyDbContext.cs
+/BackEnd/MasterPiece/Models/MasterPieceContext.cs
+/BackEnd/MasterPiece/Models/MasterPieceContext.cs
+/BackEnd/MasterPiece/Models/MasterPieceContext.cs
+/.gitignore
+/.gitignore
+

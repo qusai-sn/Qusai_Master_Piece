@@ -16,6 +16,7 @@ public partial class MasterPieceContext : DbContext
     }
 
     public virtual DbSet<Announcement> Announcements { get; set; }
+    public virtual DbSet<Contact> Contacts { get; set; }
 
     public virtual DbSet<Event> Events { get; set; }
 
@@ -26,6 +27,8 @@ public partial class MasterPieceContext : DbContext
     public virtual DbSet<EventType> EventTypes { get; set; }
 
     public virtual DbSet<Payment> Payments { get; set; }
+
+    public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
 
     public virtual DbSet<Plan> Plans { get; set; }
 
@@ -39,7 +42,7 @@ public partial class MasterPieceContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-GIEQN5M;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-QJHUPSA;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -62,6 +65,15 @@ public partial class MasterPieceContext : DbContext
                 .HasForeignKey(d => d.OrganizerId)
                 .HasConstraintName("FK__Announcem__Organ__14270015");
         });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.Email);  // Assuming Email is the primary key
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.Message).HasMaxLength(500);
+        });
+
 
         modelBuilder.Entity<Event>(entity =>
         {
@@ -175,6 +187,28 @@ public partial class MasterPieceContext : DbContext
             entity.HasOne(d => d.User).WithMany(p => p.Payments)
                 .HasForeignKey(d => d.UserId)
                 .HasConstraintName("FK__Payments__UserID__06CD04F7");
+        });
+
+        modelBuilder.Entity<PaymentMethod>(entity =>
+        {
+            entity.HasKey(e => e.PaymentMethodId).HasName("PK__PaymentM__DC31C1D37132C7B8");
+
+            entity.ToTable("PaymentMethod");
+
+            entity.Property(e => e.CardNumber).HasMaxLength(255);
+            entity.Property(e => e.CardholderName).HasMaxLength(255);
+            entity.Property(e => e.CreatedAt)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnType("datetime");
+            entity.Property(e => e.Cvv)
+                .HasMaxLength(50)
+                .HasColumnName("CVV");
+            entity.Property(e => e.ExpirationDate).HasMaxLength(50);
+
+            //entity.HasOne(d => d.User).WithMany(p => p.PaymentMethods)
+            //    .HasForeignKey(d => d.UserId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__PaymentMe__UserI__2B0A656D");
         });
 
         modelBuilder.Entity<Plan>(entity =>

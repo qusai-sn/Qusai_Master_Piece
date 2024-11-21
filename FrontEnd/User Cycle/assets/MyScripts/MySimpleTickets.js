@@ -34,4 +34,4 @@ async function fetchTickets(userId) {
 }
 
 // Call the function with the userId
-fetchTickets(1); // Replace 1 with the actual userId if needed
+fetchTickets(localStorage.getItem('userId')); // Replace 1 with the actual userId if needed

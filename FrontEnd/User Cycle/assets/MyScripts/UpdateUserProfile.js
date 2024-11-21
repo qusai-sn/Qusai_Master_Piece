@@ -26,7 +26,7 @@ async function loadUserProfile(userId) {
 async function updateUserProfile(event) {
     event.preventDefault();
 
-    const userId = 1; // Fixed user ID for testing
+    const userId = localStorage.getItem('userId'); // Fixed user ID for testing
     const updateData = {
         userId: userId,
         firstName: document.getElementById('firstname').value,
@@ -87,7 +87,7 @@ function showAlert(message, type) {
 // Initialize when document is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Load initial profile data
-    loadUserProfile(1); // Fixed user ID for testing
+    loadUserProfile(localStorage.getItem('userId')); // Fixed user ID for testing
 
     // Add form submit handler
     const form = document.querySelector('.instructor__profile-form');
