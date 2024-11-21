@@ -7,8 +7,12 @@ using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
-
+builder.Services.AddControllers()
+.AddJsonOptions(options =>
+ {
+     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+     options.JsonSerializerOptions.WriteIndented = true; // Optional: for better readability
+ });
 
 // Swagger/OpenAPI setup
 builder.Services.AddEndpointsApiExplorer();
@@ -34,12 +38,14 @@ builder.Services.AddDbContext<MasterPieceContext>(options =>
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddScoped<ITicketsService, TicketService>();
+builder.Services.AddScoped<ITicketService, TicketService>();
 builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrganizerDashboardService, OrganizerDashboardService>();
 builder.Services.AddScoped<IPaymentMethodService, PaymentMethodService>();
 builder.Services.AddScoped<ICreateEventService, CreateEventService>();
+builder.Services.AddScoped<ICategoryTypeService, CategoryTypeService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 
 

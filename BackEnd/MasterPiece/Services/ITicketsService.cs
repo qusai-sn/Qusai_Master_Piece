@@ -39,7 +39,6 @@ namespace MasterPiece.Services
         public async Task<IEnumerable<SimpleTicketDto>> GetUserTicketsAsync(int userId)
         {
             return await _context.Tickets
-                .Where(t => t.UserId == userId)
                 .Include(t => t.Event)
                 .Select(t => new SimpleTicketDto
                 {
@@ -83,3 +82,13 @@ namespace MasterPiece.Services
 
     }
 }
+
+
+
+
+
+
+
+
+
+
