@@ -1,20 +1,15 @@
 ﻿using MasterPiece.DTO;
 using MasterPiece.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace MasterPiece.Services
 {
-    // Define the interface
-    public interface ITicketsService
+    public interface ITicketService
     {
-        Task<IEnumerable<SimpleTicketDto>> GetUserTicketsAsync(int userId);
+        Task<IEnumerable<TicketDto1>> GetAllTicketsAsync();
     }
 
-    // Implement the interface in the TicketService class
-    public class TicketService : ITicketsService
+    public class TicketService : ITicketService
     {
         private readonly MasterPieceContext _context;
 
@@ -22,21 +17,43 @@ namespace MasterPiece.Services
         {
             _context = context;
         }
-
-        public async Task<IEnumerable<SimpleTicketDto>> GetUserTicketsAsync(int userId)
+        public async Task<IEnumerable<TicketDto1>> GetAllTicketsAsync()
         {
             return await _context.Tickets
-                .Where(t => t.UserId == userId)
                 .Include(t => t.Event)
-                .Select(t => new SimpleTicketDto
+                .ThenInclude(e => e.Category)
+                .Select(t => new TicketDto1
                 {
-                    EventId = t.EventId ?? 0,
-                    EventTitle = t.Event.Title,
-                    PurchaseDate = t.PurchaseDate ?? DateTime.Now,
-                    Price = t.Price ?? 0
+                    TicketId = t.TicketId,
+                    EventTitle = t.Event != null ? t.Event.Title : null,
+                    Category = t.Event != null && t.Event.Category != null ? t.Event.Category.CategoryName : null,
+                    EventDate = t.Event != null ? t.Event.EventDate : null,
+                    StartTime = t.Event != null ? t.Event.StartTime : null,
+                    Price = t.Price,
+                    PurchaseDate = t.PurchaseDate != null ? t.PurchaseDate.Value : DateTime.Now,
+                    Location = t.Event != null ? t.Event.Location : null,
+                    Status = t.Event != null && t.Event.EventDate != null
+                        ? DetermineTicketStatus(t.Event.EventDate.Value)
+                        : "Unknown"
                 })
-                .OrderByDescending(t => t.PurchaseDate)
+                .OrderByDescending(t => t.EventDate)
                 .ToListAsync();
+        }
+        private string DetermineTicketStatus(DateOnly eventDate)
+        {
+            var today = DateOnly.FromDateTime(DateTime.Now);
+            return eventDate < today ? "Expired" :
+                   eventDate == today ? "Active" : "Upcoming";
         }
     }
 }
+
+
+
+
+
+
+
+
+
+

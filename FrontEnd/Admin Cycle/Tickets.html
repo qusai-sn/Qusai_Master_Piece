@@ -116,116 +116,99 @@
     </div>
     <!-- Left Sidebar End -->
         
-        <div class="content-page">
-            <div class="content">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box">
-                                <div class="page-title-right">
-                                    <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#ticketModal">
-                                        <i class="mdi mdi-plus-circle mr-1"></i> Add Ticket
-                                    </button>
-                                </div>
-                                <h4 class="page-title">Tickets Management</h4>
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            <!-- Page Title -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-box">
+                        <h4 class="page-title">My Tickets</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="row">
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card-box widget-box-two">
+                        <div class="media">
+                            <div class="avatar-lg rounded-circle bg-soft-primary">
+                                <i class="fe-tag font-22 avatar-title text-primary"></i>
+                            </div>
+                            <div class="media-body align-self-center">
+                                <h2 class="text-dark" id="totalTickets">0</h2>
+                                <p class="text-muted mb-0">Total Tickets</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Stats Cards -->
-                    <div class="row">
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card-box widget-box-two">
-                                <div class="media">
-                                    <div class="avatar-lg rounded-circle bg-soft-primary">
-                                        <i class="fe-tag font-22 avatar-title text-primary"></i>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <h2 class="text-dark" id="totalTickets">0</h2>
-                                        <p class="text-muted mb-0">Total Tickets</p>
-                                    </div>
-                                </div>
+                </div>
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card-box widget-box-two">
+                        <div class="media">
+                            <div class="avatar-lg rounded-circle bg-soft-success">
+                                <i class="fe-check-circle font-22 avatar-title text-success"></i>
                             </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card-box widget-box-two">
-                                <div class="media">
-                                    <div class="avatar-lg rounded-circle bg-soft-success">
-                                        <i class="fe-check-circle font-22 avatar-title text-success"></i>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <h2 class="text-dark" id="activeTickets">0</h2>
-                                        <p class="text-muted mb-0">Active Tickets</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card-box widget-box-two">
-                                <div class="media">
-                                    <div class="avatar-lg rounded-circle bg-soft-info">
-                                        <i class="fe-dollar-sign font-22 avatar-title text-info"></i>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <h2 class="text-dark" id="totalRevenue">$0</h2>
-                                        <p class="text-muted mb-0">Total Revenue</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-sm-6">
-                            <div class="card-box widget-box-two">
-                                <div class="media">
-                                    <div class="avatar-lg rounded-circle bg-soft-warning">
-                                        <i class="fe-calendar font-22 avatar-title text-warning"></i>
-                                    </div>
-                                    <div class="media-body align-self-center">
-                                        <h2 class="text-dark" id="todaySales">0</h2>
-                                        <p class="text-muted mb-0">Today's Sales</p>
-                                    </div>
-                                </div>
+                            <div class="media-body align-self-center">
+                                <h2 class="text-dark" id="upcomingTickets">0</h2>
+                                <p class="text-muted mb-0">Upcoming Events</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Tickets Table -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-body">
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                                        <thead>
-                                            <tr>
-                                                <th>Ticket ID</th>
-                                                <th>Event</th>
-                                                <th>User</th>
-                                                <th>Type</th>
-                                                <th>Purchase Date</th>
-                                                <th>Price</th>
-                                                <th>Status</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody></tbody>
-                                    </table>
-                                </div>
+                </div>
+                <div class="col-xl-4 col-sm-6">
+                    <div class="card-box widget-box-two">
+                        <div class="media">
+                            <div class="avatar-lg rounded-circle bg-soft-info">
+                                <i class="fe-calendar font-22 avatar-title text-info"></i>
+                            </div>
+                            <div class="media-body align-self-center">
+                                <h2 class="text-dark" id="attendedEvents">0</h2>
+                                <p class="text-muted mb-0">Attended Events</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            2024 © Event Management System
+            <!-- Tickets Table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table id="datatable" class="table table-bordered dt-responsive nowrap"
+                                style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                <thead>
+                                    <tr>
+                                        <th>Event Title</th>
+                                        <th>Category</th>
+                                        <th>Event Date</th>
+                                        <th>Start Time</th>
+                                        <th>Purchase Date</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    2024 © Event Management System
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
 
         <!-- Ticket Modal -->
         <div class="modal fade" id="ticketModal" tabindex="-1" role="dialog" aria-hidden="true">

@@ -16,6 +16,7 @@ public partial class MasterPieceContext : DbContext
     }
 
     public virtual DbSet<Announcement> Announcements { get; set; }
+    public virtual DbSet<Contact> Contacts { get; set; }
 
     public virtual DbSet<Event> Events { get; set; }
 
@@ -41,7 +42,7 @@ public partial class MasterPieceContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-GIEQN5M;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-QJHUPSA;Database=MasterPiece;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -64,6 +65,15 @@ public partial class MasterPieceContext : DbContext
                 .HasForeignKey(d => d.OrganizerId)
                 .HasConstraintName("FK__Announcem__Organ__14270015");
         });
+
+        modelBuilder.Entity<Contact>(entity =>
+        {
+            entity.HasKey(e => e.Email);  // Assuming Email is the primary key
+            entity.Property(e => e.Name).HasMaxLength(100);
+            entity.Property(e => e.Email).HasMaxLength(100);
+            entity.Property(e => e.Message).HasMaxLength(500);
+        });
+
 
         modelBuilder.Entity<Event>(entity =>
         {
@@ -195,10 +205,10 @@ public partial class MasterPieceContext : DbContext
                 .HasColumnName("CVV");
             entity.Property(e => e.ExpirationDate).HasMaxLength(50);
 
-            entity.HasOne(d => d.User).WithMany(p => p.PaymentMethods)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__PaymentMe__UserI__2B0A656D");
+            //entity.HasOne(d => d.User).WithMany(p => p.PaymentMethods)
+            //    .HasForeignKey(d => d.UserId)
+            //    .OnDelete(DeleteBehavior.ClientSetNull)
+            //    .HasConstraintName("FK__PaymentMe__UserI__2B0A656D");
         });
 
         modelBuilder.Entity<Plan>(entity =>
