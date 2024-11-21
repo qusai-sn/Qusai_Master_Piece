@@ -51,8 +51,10 @@ public class CreateEventController : ControllerBase
 
 
     [HttpPost("speaker")]
-    public async Task<ActionResult<CreateEventResponseDTO>> AddEventSpeaker([FromBody] EventSpeakerDTO speakerDTO)
+    public async Task<ActionResult<CreateEventResponseDTO>> AddEventSpeaker([FromForm] EventSpeakerDTO speakerDTO)
     {
+ 
+ 
         var result = await _createEventService.AddEventSpeaker(speakerDTO);
         if (!result.Success) return BadRequest(result);
         return Ok(result);

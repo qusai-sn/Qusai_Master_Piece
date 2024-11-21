@@ -131,6 +131,8 @@ async function submitOverview(event) {
     const formData = new FormData();
     formData.append('Title', document.getElementById('eventTitle').value);
     formData.append('Description', document.getElementById('overview').value);
+    formData.append('Highlights', document.getElementById('Highlights').value);
+    formData.append('WhatToExpect', document.getElementById('What-to-Expect').value);
     formData.append('EventDate', document.getElementById('eventDate').value);
     formData.append('StartTime', document.getElementById('startTime').value);
     formData.append('EndTime', document.getElementById('endTime').value);
@@ -163,48 +165,53 @@ async function submitOverview(event) {
         console.error(error);
     }
 }
+ 
 
-
-async function submitSpeaker(event) {
+// Single form submission handler
+async function handleSpeakerSubmit(event) {
     event.preventDefault();
     
+    // Check for event ID first
     const eventId = eventProgress.getEventId();
     if (!eventId) {
         showError('Please complete event overview first');
         return;
     }
 
-    const speakerData = {
-        eventId: parseInt(eventId),
-        name: document.getElementById('speakerName').value,
-        role: document.getElementById('speakerRole').value,
-        bio: document.getElementById('speakerBio').value,
-        profileImageUrl: "https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png", // Add proper image handling
-        facebookUrl: "https://facebook.com",
-        twitterUrl: "https://twitter.com",
-        instagramUrl: "https://instagram.com",
-        whatsAppUrl: "https://whatsapp.com"
-    };
+    // Create FormData object
+    const formData = new FormData();
+ 
+    
+    // Add all form fields to FormData
+    formData.append('EventId', eventId);
+    formData.append('Name', document.getElementById('speakerName').value);
+    formData.append('Role', document.getElementById('speakerRole').value);
+    formData.append('Bio', document.getElementById('speakerBio').value);
+   
 
     try {
         const response = await fetch('https://localhost:7293/api/CreateEvent/speaker', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(speakerData)
+            body: formData
         });
 
-        if (!response.ok) throw new Error('Failed to add speaker');
-
         const result = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(result.message || 'Failed to add speaker');
+        }
+        
         if (result.success) {
             eventProgress.markStepComplete(STORAGE_KEYS.SPEAKERS_ADDED);
             showSuccess('Speaker added successfully');
             enableNextTab('itemThree-tab');
             clearSpeakerForm();
+        } else {
+            throw new Error(result.message || 'Failed to add speaker');
         }
     } catch (error) {
-        showError('Failed to add speaker');
-        console.error(error);
+        showError(error.message || 'Failed to add speaker');
+        console.error('Error:', error);
     }
 }
 
@@ -258,9 +265,9 @@ async function submitTickets(event) {
 
     const ticketData = {
         eventId: parseInt(eventId),
-        ticketType: document.getElementById('TicketType').value,
+        ticketType: "Paid",
         price: parseFloat(document.getElementById('price').value),
-        donationLimit: parseFloat(document.getElementById('donationLimit').value),
+        donationLimit: parseFloat(100),
         totalSeats: parseInt(document.getElementById('total-seats').value)
     };
 
@@ -359,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add form submit handlers
     document.querySelector('.instructor__profile-form')?.addEventListener('submit', submitOverview);
-    document.getElementById('speakerForm')?.addEventListener('submit', submitSpeaker);
+    document.getElementById('speakerForm')?.addEventListener('submit', handleSpeakerSubmit);
     document.getElementById('scheduleForm')?.addEventListener('submit', submitSchedule);
     document.getElementById('ticketsForm')?.addEventListener('submit', submitTickets);
     document.getElementById('final-submit')?.addEventListener('click', finalizeEvent);

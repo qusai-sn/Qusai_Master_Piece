@@ -47,6 +47,8 @@ namespace MasterPiece.Services
                 {
                     Title = dto.Title,
                     Description = dto.Description,
+                    Highlights = dto.Highlights,
+                    WhatToExpect = dto.WhatToExpect,
                     EventDate = DateOnly.FromDateTime(dto.EventDate),
                     StartTime = TimeOnly.FromTimeSpan(dto.StartTime),
                     EndTime = TimeOnly.FromTimeSpan(dto.EndTime),
@@ -100,12 +102,7 @@ namespace MasterPiece.Services
                 {
                     Name = dto.Name,
                     Role = dto.Role,
-                    Bio = dto.Bio,
-                    ProfileImageUrl = dto.ProfileImageUrl,
-                    FacebookUrl = dto.FacebookUrl,
-                    TwitterUrl = dto.TwitterUrl,
-                    InstagramUrl = dto.InstagramUrl,
-                    WhatsAppUrl = dto.WhatsAppUrl
+                    Bio = dto.Bio
                 };
 
 
