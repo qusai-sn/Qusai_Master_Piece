@@ -38,7 +38,7 @@ builder.Services.AddDbContext<MasterPieceContext>(options =>
 builder.Services.AddScoped<IEventService, EventService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPaymentService, PaymentService>();
-builder.Services.AddScoped<ITicketService, TicketService>();
+builder.Services.AddScoped<ITicketsService, TicketService>();
 builder.Services.AddScoped<IEventsProfile, EventsProfileService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IOrganizerDashboardService, OrganizerDashboardService>();
@@ -49,6 +49,7 @@ builder.Services.AddScoped<IContactService, ContactService>();
 
 
 
+ 
 
 
 var app = builder.Build();

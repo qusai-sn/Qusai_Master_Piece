@@ -6,12 +6,12 @@ namespace MasterPiece.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class TicketsController : ControllerBase
+    public class Tickets2Controller : ControllerBase
     {
-        private readonly ITicketService _ticketService;
+        private readonly ITicketsService _ticketService;
         private readonly ILogger<TicketsController> _logger;
 
-        public TicketsController(ITicketService ticketService, ILogger<TicketsController> logger)
+        public Tickets2Controller(ITicketsService ticketService, ILogger<TicketsController> logger)
         {
             _ticketService = ticketService;
             _logger = logger;
@@ -22,7 +22,7 @@ namespace MasterPiece.Controllers
         {
             try
             {
-                var tickets = await _ticketService.GetAllTicketsAsync();
+                var tickets = await _ticketService.GetUserTicketsAsync();
                 return Ok(tickets ?? Enumerable.Empty<TicketDto1>());
             }
             catch (Exception ex)
